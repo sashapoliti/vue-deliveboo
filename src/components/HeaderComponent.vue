@@ -22,7 +22,7 @@
         height: 80px;
         nav {
             width: 80%;
-            background-color: $text-color;
+            background-color: $secondary-color;
             color: $primary-color;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
