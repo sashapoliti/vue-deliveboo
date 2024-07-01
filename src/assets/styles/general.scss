@@ -29,9 +29,15 @@ body {
     ul {
         list-style-type: none;
     }
+
+    .scrolled{
+        background-color: blue !important;
+        transition: all 0.5s;
+    }
 }
 
 #app {
     height: 100vh;
     width: 100%;
 }
+
