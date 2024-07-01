@@ -1,7 +1,6 @@
 <template>
-  <main class="d-flex flex-column justify-content-between">
-    <h1 class="text-center">Ciao</h1>
-    <i class="fa fa-solid fa-home"></i>
+  <main>
+    <router-view></router-view>
   </main>
 </template>
 
