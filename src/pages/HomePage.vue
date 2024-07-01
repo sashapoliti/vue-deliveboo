@@ -121,11 +121,11 @@ export default {
     button {
       font-weight: 500;
       outline: none;
-      color: $secondary-color;
+      color: $tertiary-color;
       padding: 1em;
       padding-left: 2em;
       padding-right: 2em;
-      border: 2px dashed $secondary-color;
+      border: 2px dashed $tertiary-color;
       border-radius: 15px;
       background-color: $primary-color;
       box-shadow: 0 0 0 4px $primary-color, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
@@ -151,7 +151,7 @@ export default {
     position: absolute;
     z-index: 9;
     width: 500px;
-    bottom: calc(50% - 150px);
+    bottom: calc(50% - 80px);
     right: 15%;
     img {
       width: 100%;
@@ -161,7 +161,7 @@ export default {
     position: absolute;
     z-index: 10;
     width: 500px;
-    bottom: calc(50% - 280px);
+    bottom: calc(50% - 230px);
     right: 5%;
     img {
       width: 100%;
