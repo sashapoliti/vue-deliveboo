@@ -12,6 +12,7 @@
             pieni <br>
             di gusto
         </h1>
+        <p>Benvenuto su <span class="fst-italic">Munchi</span> – il tuo servizio di food delivery che porta morsi di felicità direttamente a casa tua.</p>
     </div>
   </div>
   <div class="prova2">
@@ -51,12 +52,21 @@ export default {
   background-position: bottom;
   background-repeat: no-repeat;
   .text {
+    width: 600px;
+    padding-top: 8%;
+    margin-left: 4%;
     color: $secondary-color;
     h1 {
       font-size: 7rem;
       font-weight: 800;
       letter-spacing: 7px;
       line-height: 0.9;
+      margin-left: -5px;
+    }
+    p {
+      padding: 20px 0;
+      font-size: 1rem;
+      font-weight: 500;
     }
   }
   .city {
