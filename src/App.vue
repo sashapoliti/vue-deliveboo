@@ -26,8 +26,7 @@ export default {
         .get(this.store.api.baseUrl + this.store.api.types)
         .then((response) => {
           this.store.data.types = response.data;
-
-          console.log(response.data);
+          /* console.log(this.store.data.types); */
         })
         .catch((error) => {})
         .finally(() => {});

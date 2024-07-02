@@ -24,11 +24,22 @@
       </div>
     </div>
   </div>
+
+  <section class="container my-5">
+    <RestaurantsFilter />
+  </section>
+
+  <section>section 2</section>
 </template>
 
 <script>
+import RestaurantsFilter from "../components/RestaurantsFilter.vue";
+
 export default {
   name: "HomePage",
+  components: {
+    RestaurantsFilter,
+  },
   data() {
     return {
       cityImages: [
