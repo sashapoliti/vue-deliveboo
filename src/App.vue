@@ -9,7 +9,7 @@
 import { store } from "./store";
 import axios from "axios";
 import HeaderComponent from "./components/HeaderComponent.vue";
-import { onMounted } from "vue";
+
 export default {
   name: "App",
   components: {
@@ -21,20 +21,20 @@ export default {
     };
   },
   methods: {
-    getRestaurants() {
+    getTypes() {
       axios
-        .get(this.store.api.baseUrl + this.store.api.restaurants)
+        .get(this.store.api.baseUrl + this.store.api.types)
         .then((response) => {
+          this.store.data.types = response.data;
+
           console.log(response.data);
-          this.store.data.restaurants = response.data;
         })
         .catch((error) => {})
         .finally(() => {});
     },
   },
   mounted() {
-    console.log("mounted");
-    this.getRestaurants();
+    this.getTypes();
   },
 };
 </script>
