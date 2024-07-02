@@ -25,11 +25,24 @@
     </div>
   </div>
 
+  <section id="instructions">
+    <div class="container d-flex align-items-center">
+      <div class="left">
+        <img src="/images/instructions/big.png" alt="">
+      </div>
+      <div class="right">
+        <h2>Come usare <span class="fst-italic">Munchi</span>? Facile!</h2>
+      </div>
+    </div>
+  </section>
+
   <section class="container my-5">
     <RestaurantsFilter />
   </section>
 
-  <section>section 2</section>
+  <section>
+    
+  </section>
 </template>
 
 <script>
@@ -97,6 +110,7 @@ export default {
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
+  overflow: hidden;
 
   .text {
     width: 600px;
@@ -161,6 +175,27 @@ export default {
     right: 5%;
     img {
       width: 100%;
+    }
+  }
+}
+
+#instructions {
+  padding: 40px 0;
+  background-color: $primary-color-2;
+  .left {
+    width: 50%;
+    img {
+      width: 100%;
+    }
+  }
+  .right {
+    padding: 0 30px;
+    color: $tertiary-color;
+    h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.07;
+      margin-bottom: 10px;
     }
   }
 }

@@ -47,10 +47,11 @@ header {
   right: 0;
   z-index: 999;
   background-color: transparent;
-  transition: position 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  transition: position 0.5s ease-in-out, background-color 0.5s ease-in-out, border-bottom 0.5s ease-in-out;
   &.fixed-navbar {
     position: fixed;
     background-color: $primary-color;
+    border-bottom: 1px solid $tertiary-color;
   }
   nav {
     height: calc(100% - 20px);
