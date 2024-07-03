@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>{{ store.data.restaurant.name }}</h1>
+    <img :src="getImage" @error="setDefaultImage"  :alt="store.data.restaurant.name">
+    <!-- <h1>{{ store.data.restaurant.name }}</h1> -->
   </div>
 </template>
 
@@ -15,9 +16,16 @@ export default {
       store,
     };
   },
-  mounted() {
-    console.log(this.store.data.restaurant);
-  },
+  computed: {
+        getImage() {
+            return store.data.restaurant.image ? `${store.api.imgBasePath}${store.data.restaurant.image}` : store.api.defaultImg;
+        }
+    },
+    methods: {
+        setDefaultImage(event) {
+            event.target.src = store.api.defaultImg;
+        }
+    },
   beforeRouteEnter(to, from, next) {
     if (Object.keys(store.data.restaurant).length > 0) {
       next();
