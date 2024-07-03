@@ -33,11 +33,33 @@
       <div class="right">
         <h2>Come usare <span class="fst-italic">Munchi</span>? Facile!</h2>
         <div class="totem">
-          <div class="step d-flex my-4">
-            <div class="img"></div>
+          <div class="step d-flex my-4 align-items-center">
+            <div class="image">
+              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c" alt="Immagine numero 1">
+            </div>
             <div class="text">
-              <h3>Seleziona un ristorante</h3>
-              <p>Seleziona il ristorante di cui vuoi andare</p>
+              <h3>Scegli il ristorante</h3>
+              <p>Scopri i migliori ristoranti della tua zona e seleziona i piatti che più ti piacciono.</p>
+            </div>
+          </div>
+
+          <div class="step d-flex my-4 align-items-center">
+            <div class="image">
+              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c" alt="Immagine numero 1">
+            </div>
+            <div class="text">
+              <h3>Consegna veloce e affidabile</h3>
+              <p>Ordina facilmente e rilassati. Il nostro servizio di consegna rapido e sicuro porterà il tuo cibo preferito direttamente alla tua porta.</p>
+            </div>
+          </div>
+
+          <div class="step d-flex my-4 align-items-center">
+            <div class="image">
+              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c" alt="Immagine numero 1">
+            </div>
+            <div class="text">
+              <h3>Gusta ogni boccone</h3>
+              <p>Prepara le papille gustative per un'esperienza indimenticabile. Con Munchi, ogni boccone è un'esplosione di sapore!</p>
             </div>
           </div>
         </div>
@@ -198,6 +220,7 @@ export default {
     }
   }
   .right {
+    width: 50%;
     padding: 0 30px;
     color: $tertiary-color;
     h2 {
@@ -205,6 +228,24 @@ export default {
       font-weight: 800;
       line-height: 1.07;
       margin-bottom: 10px;
+    }
+    .image {
+      width: 120px;
+      aspect-ratio: 1 / 1;
+      img {
+        width: 100%;
+      }
+    }
+    .text {
+      margin-left: 20px;
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+      }
     }
   }
 }
