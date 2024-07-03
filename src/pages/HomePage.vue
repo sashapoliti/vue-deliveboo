@@ -28,38 +28,59 @@
   <section id="instructions">
     <div class="container d-flex align-items-center">
       <div class="left">
-        <img src="/images/instructions/big.png" alt="">
+        <img src="/images/instructions/big.png" alt="" />
       </div>
       <div class="right">
         <h2>Come usare <span class="fst-italic">Munchi</span>? Facile!</h2>
         <div class="totem">
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
-              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c" alt="Immagine numero 1">
+              <img
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c"
+                alt="Immagine numero 1"
+              />
             </div>
             <div class="text">
               <h3>Scegli il ristorante</h3>
-              <p>Scopri i migliori ristoranti della tua zona e seleziona i piatti che più ti piacciono.</p>
+              <p>
+                Scopri i migliori ristoranti della tua zona e seleziona i piatti
+                che più ti piacciono.
+              </p>
             </div>
           </div>
 
+          <div class="pois"></div>
+
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
-              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c" alt="Immagine numero 1">
+              <img
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c"
+                alt="Immagine numero 1"
+              />
             </div>
             <div class="text">
               <h3>Consegna veloce e affidabile</h3>
-              <p>Il nostro servizio di consegna rapido e sicuro porterà il tuo cibo preferito direttamente alla tua porta.</p>
+              <p>
+                Il nostro servizio di consegna rapido e sicuro porterà il tuo
+                cibo preferito direttamente alla tua porta.
+              </p>
             </div>
           </div>
 
+          <div class="pois"></div>
+
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
-              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c" alt="Immagine numero 1">
+              <img
+                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c"
+                alt="Immagine numero 1"
+              />
             </div>
             <div class="text">
               <h3>Gusta ogni boccone</h3>
-              <p>Prepara le papille gustative per un'esperienza indimenticabile!</p>
+              <p>
+                Prepara le papille gustative per un'esperienza indimenticabile!
+              </p>
             </div>
           </div>
         </div>
@@ -71,9 +92,7 @@
     <RestaurantsFilter />
   </section>
 
-  <section>
-    
-  </section>
+  <section></section>
 </template>
 
 <script>
@@ -213,13 +232,13 @@ export default {
 #instructions {
   background-color: $primary-color-2;
   .left {
-    width: 50%;
+    width: 55%;
     img {
       width: 100%;
     }
   }
   .right {
-    width: 50%;
+    width: 45%;
     padding: 0 30px;
     color: $tertiary-color;
     h2 {
@@ -247,7 +266,21 @@ export default {
       }
       p {
         margin: 0;
+        width: 80%;
       }
+    }
+    .pois::before {
+      content: ".....";
+      font-family: "Font Awesome 5 Free";
+      font-size: 3em;
+      line-height: 0.20;
+      word-break: break-word;
+      height: 1.5em;
+      width: 1rem;
+      text-align: center;
+      margin: -20px 0 -20px 0.85em;
+      display: block;
+      color: $tertiary-color;
     }
   }
 }
