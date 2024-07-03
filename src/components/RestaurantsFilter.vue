@@ -29,7 +29,7 @@
           </div>
         </div>
         <div v-else v-for="restaurant in restaurants" :key="restaurant.id" 
-        class="col-12 col-md-6 col-lg-3">
+        class="col-12 col-md-6 col-lg-3 mb-3">
           <RouterLink
             :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
             @click="propRestaurant(restaurant)"
