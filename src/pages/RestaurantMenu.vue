@@ -15,6 +15,9 @@ export default {
       store,
     };
   },
+  mounted() {
+    console.log(this.store.data.restaurant);
+  },
   beforeRouteEnter(to, from, next) {
     if (Object.keys(store.data.restaurant).length > 0) {
       next();
@@ -31,6 +34,7 @@ export default {
     }
   },
 };
+
 </script>
 
 <style lang="scss" scoped></style>
