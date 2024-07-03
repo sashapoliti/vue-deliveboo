@@ -89,11 +89,11 @@
   </section>
 
   <!-- Restaurants list section -->
-  <section id="restaurants-list" class="container my-5">
+  <section id="restaurants-list" class="container">
     <RestaurantsFilter />
   </section>
 
-  <section></section>
+  <section>1</section>
 </template>
 
 <script>
@@ -298,5 +298,11 @@ export default {
       color: $tertiary-color;
     }
   }
+}
+
+#restaurants-list {
+  padding: 20px 10px;
+  margin: 70px auto;
+  border-radius: 50px;
 }
 </style>

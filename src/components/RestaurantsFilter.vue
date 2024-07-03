@@ -1,9 +1,12 @@
 <template>
   <div class="d-flex container">
-    
     <!-- filter -->
     <div class="filter d-flex flex-column">
-      <div class="filter-box mb-2" v-for="item in store.data.types" :key="item.id">
+      <div
+        class="filter-box mb-2 pb-2"
+        v-for="item in store.data.types"
+        :key="item.id"
+      >
         <label
           :for="'checkbox-' + item.id"
           class="container-checkbox d-flex align-items-center"
@@ -13,23 +16,45 @@
             :id="'checkbox-' + item.id"
             @change="updateSelectedTypes(item.id)"
           />
-          <div class="checkmark"></div>
-          <span class="ms-2">{{ item.name }}</span>
+          <div
+            class="checkmark d-flex justify-content-center align-items-center"
+          >
+            <img
+              src="https://images.deliveryhero.io/image/customer-assets-glovo/search_filters/10eac1b715a4fb5801b1523d1064be6ae5baa4e08b1b704c301ef4b4ffbfca65?t=W3siYXV0byI6eyJxIjoibG93In19XQ=="
+              alt=""
+            />
+          </div>
+          <span
+            class="ms-2"
+            :style="{
+              'font-weight': selectedTypes.includes(item.id)
+                ? 'bolder'
+                : '500',
+            }"
+            >{{ item.name }}</span
+          >
         </label>
       </div>
     </div>
 
     <!-- restaurants -->
-    <div class="restaurants container ">
+    <div class="restaurants container">
       <div class="row">
         <div class="col-12 text-center mt-5" v-if="restaurants.length === 0">
-          <h4>Non ci sono ristoranti</h4> 
+          <h4>Non ci sono ristoranti</h4>
           <div>
-            <i class="fa-solid fa-face-sad-tear fa-3x" style="color: rgba(0, 0, 0, 0.5);"></i>
+            <i
+              class="fa-solid fa-face-sad-tear fa-3x"
+              style="color: rgba(0, 0, 0, 0.5)"
+            ></i>
           </div>
         </div>
-        <div v-else v-for="restaurant in restaurants" :key="restaurant.id" 
-        class="col-12 col-md-6 col-lg-3 mb-3">
+        <div
+          v-else
+          v-for="restaurant in restaurants"
+          :key="restaurant.id"
+          class="col-12 col-md-6 col-lg-3 mb-3"
+        >
           <RouterLink
             :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
             @click="propRestaurant(restaurant)"
@@ -49,9 +74,8 @@ import CardComponent from "./CardComponent.vue";
 
 export default {
   name: "RestaurantsFilter",
-  components: 
-  {
-    CardComponent 
+  components: {
+    CardComponent,
   },
   data() {
     return {
@@ -107,8 +131,8 @@ export default {
     border-bottom: 1px solid #e6d4c3;
   }
   span {
-    font-size: 1rem;
-    margin-bottom: -5px;
+    font-size: 0.9rem;
+    font-weight: 900;
   }
   .container-checkbox input {
     position: absolute;
@@ -118,6 +142,7 @@ export default {
     width: 0;
   }
   .container-checkbox {
+    padding: 3px;
     display: block;
     position: relative;
     cursor: pointer;
@@ -129,35 +154,19 @@ export default {
     position: relative;
     top: 0;
     left: 0;
-    height: 1em;
-    width: 1em;
+    right: 0;
+    bottom: 0;
+    height: 1.5em;
+    width: 1.5em;
     background-color: $primary-color-2;
-    border-radius: 0.2pc;
-    box-shadow: 3px 3px $secondary-color;
+    border-radius: 56% 44% 45% 55% / 58% 53% 47% 42%;
+    img {
+      width: 25px;
+    }
   }
   /* When the checkbox is checked, add a blue background */
   .container-checkbox input:checked ~ .checkmark {
-    background-color: $tertiary-color;
-  }
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  /* Show the checkmark when checked */
-  .container-checkbox input:checked ~ .checkmark:after {
-    display: block;
-  }
-  /* Style the checkmark/indicator */
-  .container-checkbox .checkmark:after {
-    left: 0.4em;
-    top: 0.25em;
-    width: 0.25em;
-    height: 0.5em;
-    border: solid $primary-color;
-    border-width: 0 0.15em 0.15em 0;
-    transform: rotate(45deg);
+    background-color: #ffd198;
   }
 }
 .restaurants {
