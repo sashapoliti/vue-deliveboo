@@ -11,16 +11,20 @@
       <img src="/images/wave.svg" alt="wave" class="wave-img">
     </div>
     <div class="container-bottom container">
-      <div class="text-center">
+      <div class="text-center my-3 mb-5">
         <h2 class="text-uppercase">Menu</h2>
       </div>
       <div class="row">
-        <div class="col-4" v-for="plate in store.data.restaurant.plates" :key="plate.id">
-
+        <div class="col-12 col-md-6 col-lg-3 mb-4" v-for="plate in store.data.restaurant.plates" :key="plate.id">
           <div class="card">
             <img :src="'http://127.0.0.1:8000/storage/' + plate.image" @error="setDefaultImage" class="card-img-top" :alt="plate.name">
             <div class="card-body">
-              <h5 class="card-title">{{ plate.name }}</h5>
+              <!-- <p>{{ plate?.category }}</p> -->
+              <h3 class="card-title">{{ plate.name }}</h3>
+              <h5>{{ plate.price }} €</h5>
+              <button class="btn btn-danger rounded-5   text-uppercase">
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
@@ -90,6 +94,7 @@ export default {
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
+   
 
     h1 {
       font-size: 5rem;
@@ -103,10 +108,9 @@ export default {
       font-weight: 600;
       margin-top: 20px;
       text-shadow: 0 0 10px black;
+      font-weight: 400;
     }
-
   }
-
   img {
     width: 100%;
     height: 100%;
@@ -126,5 +130,20 @@ export default {
 
 .container-bottom {
   margin-top: -60px;
+  .card{
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .card-body{
+    margin: 10px 15px 10px 15px;
+    .card-title {
+    font-weight: 800;
+  }
+    button{
+      margin: 10px 0px 5px 0px;
+      font-weight: 600;
+      padding: 15px 20px 15px 20px;
+    }
+  }
 }
 </style>
