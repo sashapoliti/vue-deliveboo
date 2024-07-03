@@ -1,8 +1,13 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex container">
+    
+    <!-- filter -->
     <div class="filter d-flex flex-column">
-      <div class="mb-2" v-for="item in store.data.types" :key="item.id">
-        <label :for="'checkbox-' + item.id" class="container-checkbox d-flex align-items-center">
+      <div class="filter-box mb-2" v-for="item in store.data.types" :key="item.id">
+        <label
+          :for="'checkbox-' + item.id"
+          class="container-checkbox d-flex align-items-center"
+        >
           <input
             type="checkbox"
             :id="'checkbox-' + item.id"
@@ -13,13 +18,26 @@
         </label>
       </div>
     </div>
-    <div class="restaurants">
-      <p v-if="!restaurants">Non ci sono ristoranti</p>
-      <ul v-else>
-        <li v-for="restaurant in restaurants" :key="restaurant.id">
-          {{ restaurant.name }}
-        </li>
-      </ul>
+
+    <!-- restaurants -->
+    <div class="restaurants container ">
+      <div class="row">
+        <div class="col-12 text-center mt-5" v-if="restaurants.length === 0">
+          <h4>Non ci sono ristoranti</h4> 
+          <div>
+            <i class="fa-solid fa-face-sad-tear fa-3x" style="color: rgba(0, 0, 0, 0.5);"></i>
+          </div>
+        </div>
+        <div v-else v-for="restaurant in restaurants" :key="restaurant.id" 
+        class="col-12 col-md-6 col-lg-3">
+          <RouterLink
+            :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
+            @click="propRestaurant(restaurant)"
+          >
+            <CardComponent :restaurant="restaurant" />
+          </RouterLink>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -27,8 +45,14 @@
 <script>
 import { store } from "../store";
 import axios from "axios";
+import CardComponent from "./CardComponent.vue";
+
 export default {
   name: "RestaurantsFilter",
+  components: 
+  {
+    CardComponent 
+  },
   data() {
     return {
       store,
@@ -66,6 +90,10 @@ export default {
         .catch((error) => {})
         .finally(() => {});
     },
+    propRestaurant(object) {
+      this.store.data.restaurant = {};
+      this.store.data.restaurant = object;
+    },
   },
 };
 </script>
@@ -75,6 +103,9 @@ export default {
 
 .filter {
   width: 20%;
+  .filter-box {
+    border-bottom: 1px solid #e6d4c3;
+  }
   span {
     font-size: 1rem;
     margin-bottom: -5px;
@@ -120,7 +151,7 @@ export default {
   }
   /* Style the checkmark/indicator */
   .container-checkbox .checkmark:after {
-    left: 0.40em;
+    left: 0.4em;
     top: 0.25em;
     width: 0.25em;
     height: 0.5em;

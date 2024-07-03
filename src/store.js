@@ -7,7 +7,7 @@ export const store = reactive({
         types: 'types/',
     },
     data: {
-        restaurants: [],
         types: [],
+        restaurant: {}
     }
 });
