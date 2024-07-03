@@ -49,7 +49,7 @@
             </div>
             <div class="text">
               <h3>Consegna veloce e affidabile</h3>
-              <p>Ordina facilmente e rilassati. Il nostro servizio di consegna rapido e sicuro porterà il tuo cibo preferito direttamente alla tua porta.</p>
+              <p>Il nostro servizio di consegna rapido e sicuro porterà il tuo cibo preferito direttamente alla tua porta.</p>
             </div>
           </div>
 
@@ -59,7 +59,7 @@
             </div>
             <div class="text">
               <h3>Gusta ogni boccone</h3>
-              <p>Prepara le papille gustative per un'esperienza indimenticabile. Con Munchi, ogni boccone è un'esplosione di sapore!</p>
+              <p>Prepara le papille gustative per un'esperienza indimenticabile!</p>
             </div>
           </div>
         </div>
@@ -211,7 +211,6 @@ export default {
 }
 
 #instructions {
-  padding: 40px 0;
   background-color: $primary-color-2;
   .left {
     width: 50%;
@@ -230,13 +229,16 @@ export default {
       margin-bottom: 10px;
     }
     .image {
-      width: 120px;
+      width: 100px;
       aspect-ratio: 1 / 1;
+      background-color: $primary-color;
+      border-radius: 50px;
       img {
-        width: 100%;
+        width: 0;
       }
     }
     .text {
+      width: calc(100% - 100px);
       margin-left: 20px;
       h3 {
         font-size: 1.5rem;
