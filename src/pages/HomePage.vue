@@ -1,5 +1,5 @@
 <template>
-  <!-- <div class="foods"></div> -->
+  <!-- Jumbotron -->
   <div id="jumbotron">
     <transition name="slide" mode="out-in">
       <div class="city" :key="currentCityIndex">
@@ -25,6 +25,7 @@
     </div>
   </div>
 
+  <!-- Instructions section -->
   <section id="instructions">
     <div class="container d-flex align-items-center">
       <div class="left">
@@ -88,6 +89,7 @@
     </div>
   </section>
 
+  <!-- Restaurants list section -->
   <section class="container my-5">
     <RestaurantsFilter />
   </section>
@@ -230,7 +232,12 @@ export default {
 }
 
 #instructions {
-  background-color: $primary-color-2;
+  width: 100%;
+  background-image: url("/images/instructions/onda-bottom.svg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 100px;
   .left {
     width: 55%;
     img {
