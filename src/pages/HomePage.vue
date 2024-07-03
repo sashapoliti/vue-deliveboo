@@ -20,7 +20,9 @@
         food delivery che porta morsi di felicità direttamente a casa tua.
       </p>
       <div class="mt-5 text-center">
-        <button class="text-uppercase">vai ai ristoranti</button>
+        <button class="text-uppercase" @click="goToRestaurants">
+          vai ai ristoranti
+        </button>
       </div>
     </div>
   </div>
@@ -36,10 +38,7 @@
         <div class="totem">
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
-              <img
-                src="/images/instructions/phone.png"
-                alt="Immagine phone"
-              />
+              <img src="/images/instructions/phone.png" alt="Immagine phone" />
             </div>
             <div class="text">
               <h3>Scegli il ristorante</h3>
@@ -90,7 +89,7 @@
   </section>
 
   <!-- Restaurants list section -->
-  <section class="container my-5">
+  <section id="restaurants-list" class="container my-5">
     <RestaurantsFilter />
   </section>
 
@@ -137,6 +136,15 @@ export default {
     },
     stopImageRotation() {
       clearInterval(this.intervalId);
+    },
+    goToRestaurants() {
+      const section = document.getElementById("restaurants-list");
+      if (section) {
+        window.scrollTo({
+          top: section.offsetTop,
+          behavior: "smooth",
+        });
+      }
     },
   },
 };
@@ -280,7 +288,7 @@ export default {
       content: ".....";
       font-family: "Font Awesome 5 Free";
       font-size: 3em;
-      line-height: 0.20;
+      line-height: 0.2;
       word-break: break-word;
       height: 1.5em;
       width: 1rem;
