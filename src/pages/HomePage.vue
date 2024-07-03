@@ -36,8 +36,8 @@
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
               <img
-                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c"
-                alt="Immagine numero 1"
+                src="/images/instructions/phone.png"
+                alt="Immagine phone"
               />
             </div>
             <div class="text">
@@ -54,7 +54,7 @@
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
               <img
-                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c"
+                src="/images/instructions/scooter.png"
                 alt="Immagine numero 1"
               />
             </div>
@@ -72,7 +72,7 @@
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
               <img
-                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f55211c7-40a6-4534-8ab2-a6a55256621d/dfzf1wn-13cfa100-47eb-420b-91f9-603b40e61138.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1NTIxMWM3LTQwYTYtNDUzNC04YWIyLWE2YTU1MjU2NjIxZFwvZGZ6ZjF3bi0xM2NmYTEwMC00N2ViLTQyMGItOTFmOS02MDNiNDBlNjExMzgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.i7FdnaQn1q2hSxhSxD8uBafG8QxeD78z9aB3dTZ9W_c"
+                src="/images/instructions/food.png"
                 alt="Immagine numero 1"
               />
             </div>
@@ -253,11 +253,11 @@ export default {
       background-color: $primary-color;
       border-radius: 50px;
       img {
-        width: 0;
+        width: 100%;
       }
     }
     .text {
-      width: calc(100% - 100px);
+      width: calc(100% - 80px);
       margin-left: 20px;
       h3 {
         font-size: 1.5rem;
@@ -278,7 +278,7 @@ export default {
       height: 1.5em;
       width: 1rem;
       text-align: center;
-      margin: -20px 0 -20px 0.85em;
+      margin: -20px 0 -20px 0.8em;
       display: block;
       color: $tertiary-color;
     }
