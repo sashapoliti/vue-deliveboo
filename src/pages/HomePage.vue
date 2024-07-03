@@ -32,6 +32,15 @@
       </div>
       <div class="right">
         <h2>Come usare <span class="fst-italic">Munchi</span>? Facile!</h2>
+        <div class="totem">
+          <div class="step d-flex my-4">
+            <div class="img"></div>
+            <div class="text">
+              <h3>Seleziona un ristorante</h3>
+              <p>Seleziona il ristorante di cui vuoi andare</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
