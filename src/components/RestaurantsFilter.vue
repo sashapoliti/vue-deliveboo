@@ -2,7 +2,10 @@
   <div class="d-flex">
     <div class="filter d-flex flex-column">
       <div class="mb-2" v-for="item in store.data.types" :key="item.id">
-        <label :for="'checkbox-' + item.id" class="container-checkbox d-flex align-items-center">
+        <label
+          :for="'checkbox-' + item.id"
+          class="container-checkbox d-flex align-items-center"
+        >
           <input
             type="checkbox"
             :id="'checkbox-' + item.id"
@@ -14,10 +17,13 @@
       </div>
     </div>
     <div class="restaurants">
-      <p v-if="!restaurants">Non ci sono ristoranti</p>
+      <p v-if="restaurants.length === 0">Non ci sono ristoranti</p>
       <ul v-else>
         <li v-for="restaurant in restaurants" :key="restaurant.id">
-          {{ restaurant.name }}
+          <RouterLink
+            :to="{ name: 'restaurant', params: { slug: restaurant.slug } }">
+            {{ restaurant.name }}
+          </RouterLink>
         </li>
       </ul>
     </div>
@@ -120,7 +126,7 @@ export default {
   }
   /* Style the checkmark/indicator */
   .container-checkbox .checkmark:after {
-    left: 0.40em;
+    left: 0.4em;
     top: 0.25em;
     width: 0.25em;
     height: 0.5em;
