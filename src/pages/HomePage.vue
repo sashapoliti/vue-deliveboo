@@ -180,8 +180,8 @@ export default {
     h1 {
       font-size: 7rem;
       font-weight: 800;
-      line-height: 1.07;
-      margin-left: -5px;
+      line-height: 0.9;
+      margin-left: -1px;
     }
     p {
       padding: 20px 0;
@@ -189,6 +189,7 @@ export default {
       font-weight: 500;
     }
     button {
+      font-family: $title-font;
       font-weight: 500;
       outline: none;
       color: $tertiary-color;

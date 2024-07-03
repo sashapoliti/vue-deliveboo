@@ -53,7 +53,7 @@
           v-else
           v-for="restaurant in restaurants"
           :key="restaurant.id"
-          class="col-12 col-md-6 col-lg-3 mb-3"
+          class="col-12 col-md-6 col-lg-4 mb-3"
         >
           <RouterLink
             :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
@@ -166,10 +166,11 @@ export default {
   }
   /* When the checkbox is checked, add a blue background */
   .container-checkbox input:checked ~ .checkmark {
-    background-color: #ffd198;
+    background-color: #fdc888;
   }
 }
 .restaurants {
   width: 80%;
+  padding-left: 40px;
 }
 </style>
