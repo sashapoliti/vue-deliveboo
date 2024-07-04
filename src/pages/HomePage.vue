@@ -93,9 +93,17 @@
     <RestaurantsFilter />
   </section>
 
+  <!-- Social section -->
   <section id="social">
-    <img class="wave1" src="/images/social/wave_mix.svg" alt="">
+    <div class="wrapper">
+      <div class="icons"></div>
+      <div class="wave1"></div>
+      <div class="wave2"></div>
+    </div>
   </section>
+
+  <!-- Footer section -->
+  <footer></footer>
 </template>
 
 <script>
@@ -306,13 +314,48 @@ export default {
 #restaurants-list {
   padding: 20px 10px;
   margin: 70px auto;
+  margin-bottom: 0;
   border-radius: 50px;
 }
 
 #social {
   background-color: $tertiary-color;
-  .wave1 {
+  .wrapper {
+    position: relative;
     width: 100%;
+    background-image: url("/images/social/background.png");
+    .icons {
+      position: absolute;
+      width: 300px;
+      height: 100px;
+      top: calc(50% - 50px);
+      left: calc(50% - 150px);
+      background-color: $primary-color;
+    }
+    .wave1 {
+      width: 100%;
+      height: 380px;
+      background-image: url("/images/social/wave_mix.svg");
+      background-size: cover;
+      background-position: bottom;
+      background-repeat: no-repeat;
+    }
+    .wave2 {
+      width: 100%;
+      height: 380px;
+      background-image: url("/images/social/wave_green.svg");
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+    }
   }
+}
+
+footer {
+  position: relative;
+  margin-top: -150px;
+  width: 100%;
+  height: 200px;
+  background-color: $secondary-color;
 }
 </style>
