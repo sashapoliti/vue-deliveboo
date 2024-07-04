@@ -93,28 +93,7 @@
     <RestaurantsFilter />
   </section>
 
-  <!-- Social section -->
-  <section id="social">
-    <div class="wrapper">
-      <div class="icons d-flex justify-content-center align-items-center">
-          <h3 class="me-3">Seguici qui</h3>
-          <a class="mx-1 d-flex justify-content-center align-items-center" href="https://www.facebook.com">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-          <a class="mx-1 d-flex justify-content-center align-items-center" href="https://www.instagram.com">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a class="mx-1 d-flex justify-content-center align-items-center" href="https://www.twitter.com">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-      </div>
-      <div class="wave1"></div>
-      <div class="wave2"></div>
-    </div>
-  </section>
-
-  <!-- Footer section -->
-  <footer></footer>
+  
 </template>
 
 <script>
@@ -327,60 +306,5 @@ export default {
   margin: 70px auto;
   margin-bottom: 0;
   border-radius: 50px;
-}
-
-#social {
-  background-color: $primary-color-2;
-  .wrapper {
-    position: relative;
-    width: 100%;
-    background-image: url("/images/social/background.png");
-    .icons {
-      position: absolute;
-      width: 350px;
-      height: 90px;
-      top: calc(50% - 45px);
-      left: calc(50% - 175px);
-      background-color: $primary-color-2;
-      color: $tertiary-color;
-      a {
-        font-size: 1.7rem;
-        background-color: $primary-color;
-        color: $tertiary-color;
-        width: 50px;
-        height: 50px;
-        border-radius: 50px;
-        transition: background-color 0.3s ease-in-out;
-        &:hover {
-          background-color: $tertiary-color;
-          color: $primary-color;
-        }
-      }
-    }
-    .wave1 {
-      width: 100%;
-      height: 380px;
-      background-image: url("/images/social/wave_mix.svg");
-      background-size: cover;
-      background-position: bottom;
-      background-repeat: no-repeat;
-    }
-    .wave2 {
-      width: 100%;
-      height: 380px;
-      background-image: url("/images/social/wave_green.svg");
-      background-size: cover;
-      background-position: top;
-      background-repeat: no-repeat;
-    }
-  }
-}
-
-footer {
-  position: relative;
-  margin-top: -150px;
-  width: 100%;
-  height: 200px;
-  background-color: $secondary-color;
 }
 </style>
