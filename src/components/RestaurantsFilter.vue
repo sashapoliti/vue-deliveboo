@@ -35,7 +35,13 @@
 
     <!-- restaurants -->
     <div class="restaurants container">
-      <div class="row h-100">
+      <span
+        class="fw-bold ms-1"
+        v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
+      >
+        Tutti i ristoranti
+      </span>
+      <div class="row pt-2">
         <!-- loader -->
         <div
           class="loader col-12 h-100 d-flex justify-content-center align-items-center"
@@ -64,23 +70,41 @@
             <div class="spoke"></div>
           </div>
         </div>
-        <!-- no results -->
+
+        <!-- No filters selected -->
         <div
-          class="col-12 h-100 d-flex justify-content-center align-items-center mt-5"
-          v-if="restaurants.length === 0 && !loading"
+          class="col-12 h-100 d-flex justify-content-center align-items-center no-filters"
+          v-if="selectedTypes.length === 0 && !loading"
         >
           <div class="text-center">
-            <h4>Non ci sono ristoranti</h4>
             <div>
-              <i
-                class="fa-solid fa-face-sad-tear fa-3x"
-                style="color: rgba(0, 0, 0, 0.5)"
-              ></i>
+              <img src="" alt="Nessun filtro selezionato" />
             </div>
+            <p>Non ci sono filtri selezionati...</p>
           </div>
         </div>
+
+        <!-- no results -->
         <div
-          v-else
+          class="col-12 h-100 d-flex justify-content-center align-items-center no-results"
+          v-if="
+            restaurants.length === 0 && selectedTypes.length > 0 && !loading
+          "
+        >
+          <div class="text-center">
+            <div>
+              <img
+                src="/images/filter_component/no_results.png"
+                alt="Immagine no ristoranti"
+              />
+            </div>
+            <p>Non ci sono ristoranti...</p>
+          </div>
+        </div>
+
+        <!-- restaurants -->
+        <div
+          v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
           v-for="restaurant in restaurants"
           :key="restaurant.id"
           class="col-12 col-md-6 col-lg-4 mb-3"
@@ -206,6 +230,14 @@ export default {
 .restaurants {
   width: 80%;
   padding-left: 40px;
+  .row {
+    height: calc(100% - 25px);
+    .no-results {
+      img {
+        width: 300px;
+      }
+    }
+  }
   .loader {
     .wheel-and-hamster {
       --dur: 1s;
