@@ -1,7 +1,11 @@
 <template>
     <div class="braintree-dropin-wrapper">
       <div id="dropin-container"></div>
-      <button @click="submitPayment" class="btn btn-danger pay-button">Proceed to Payment</button>
+      <div>
+        <button @click="submitPayment" class="btn btn-danger pay-button" :disabled="disabled">
+          Proceed to Payment
+        </button>
+      </div>
       <div id="payment-result">{{ paymentResult }}</div>
     </div>
   </template>
@@ -17,6 +21,7 @@
         clientToken: '',
         paymentResult: '',
         amount: 10,
+        disabled: false,
       };
     },
     mounted() {
@@ -45,7 +50,11 @@
         });
       },
       async submitPayment() {
-        this.instance.requestPaymentMethod(async (err, payload) => {
+        if (this.name=='' || this.surname=='' || this.email=='') {
+          this.paymentResult = `Errore durante il pagamento: Nome, Cognome o Email sono vuoti`;
+        }else{
+          this.disabled = true;
+          this.instance.requestPaymentMethod(async (err, payload) => {
           if (err) {
             console.error(err);
             return;
@@ -69,9 +78,11 @@
           } finally {
             this.instance.clearSelectedPaymentMethod();
             this.$router.push({ name: 'home' });
-
+            this.disabled = false;
           }
         });
+        }
+       
       },
     },
   };

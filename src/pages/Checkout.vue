@@ -11,15 +11,15 @@
             <div class="row ">
               <div class="col-6">
                 <label for="name">Name <strong class="text-danger">*</strong></label>
-                <input type="text" id="name" v-model="name"  class="form-control my-3" placeholder="Name">
+                <input type="text" id="name" minlength="3" maxlength="50" v-model="name"  class="form-control my-3" placeholder="Name">
               </div>
               <div class="col-6">
                 <label for="surname">Surname <strong class="text-danger">*</strong></label>
-                <input type="text" id="surname" v-model="surname"  class="form-control my-3" placeholder="Surname">
+                <input type="text" id="surname" v-model="surname" minlength="3"  maxlength="50" class="form-control my-3" placeholder="Surname">
               </div>
             </div>
             <label for="email">Email <strong class="text-danger">*</strong></label>
-            <input type="email" id="email" v-model="email"  class="form-control my-3" placeholder="Email">
+            <input type="email" id="email" v-model="email" maxlength="50"  class="form-control my-3" placeholder="Email">
           </div>
         </div>
   
