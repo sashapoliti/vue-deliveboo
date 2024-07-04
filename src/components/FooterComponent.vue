@@ -3,21 +3,20 @@
   <section id="social">
     <div class="wrapper">
       <div class="icons d-flex justify-content-center align-items-center">
-        <h3 class="me-3">Seguici qui</h3>
         <a
-          class="mx-1 d-flex justify-content-center align-items-center"
+          class="mx-3 d-flex justify-content-center align-items-center"
           href="https://www.facebook.com"
         >
           <i class="fa-brands fa-facebook-f"></i>
         </a>
         <a
-          class="mx-1 d-flex justify-content-center align-items-center"
+          class="mx-3 d-flex justify-content-center align-items-center"
           href="https://www.instagram.com"
         >
           <i class="fa-brands fa-instagram"></i>
         </a>
         <a
-          class="mx-1 d-flex justify-content-center align-items-center"
+          class="mx-3 d-flex justify-content-center align-items-center"
           href="https://www.twitter.com"
         >
           <i class="fa-brands fa-x-twitter"></i>
@@ -172,24 +171,24 @@ export default {
     background-image: url("/images/social/background.png");
     .icons {
       position: absolute;
-      width: 350px;
+      width: 410px;
       height: 120px;
       top: calc(50%);
-      left: calc(50% - 175px);
-      background-color: $primary-color-2;
+      left: calc(50% - 205px);
       color: $tertiary-color;
       border-radius: 20px;
       a {
-        font-size: 1.7rem;
+        font-size: 3rem;
         background-color: $primary-color;
         color: $tertiary-color;
-        width: 50px;
-        height: 50px;
+        width: 100px;
+        height: 100px;
         border-radius: 50px;
-        transition: background-color 0.3s ease-in-out;
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.3s ease-in-out;
         &:hover {
           background-color: $tertiary-color;
           color: $primary-color;
+          transform: scale(1.2);
         }
       }
     }
