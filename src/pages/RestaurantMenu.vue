@@ -43,17 +43,10 @@
           <h5>10 €</h5>
         </div>
         <div class="text-center">
-          <button class="btn btn-danger red-button">Checkout</button>
+          <button class="btn btn-danger red-button" @click="$router.push({ name: 'checkout' })">Checkout</button>
         </div>
       </div>
-
-
-
       </div>
-      
-
-
-
     </div>
 
   </div>
@@ -67,7 +60,7 @@ import CardComponent from "../components/CardComponent.vue";
 export default {
   name: "RestaurantMenu",
   components: {
-    CardComponent
+    CardComponent,
   },
   data() {
     return {
