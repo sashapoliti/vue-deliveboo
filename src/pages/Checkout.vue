@@ -1,6 +1,5 @@
 <template>
-    <div class="container">
-        <h1>Checkout</h1>
+    <div class="container card rounded-5">
         <PaymentComponent />
     </div>
 </template>
@@ -17,5 +16,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .container {
+        margin-top: 50px;
+        text-align: center;
+    }
 </style>
