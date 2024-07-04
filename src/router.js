@@ -22,13 +22,6 @@ const router = createRouter({
       path: "/checkout",
       name: "checkout",
       component: Checkout,
-      // beforeEnter: (to, from) => {
-      //   if (Object.keys(store.data.restaurant).length > 0) {
-      //     return true;
-      //   } else {
-      //     return { name: "home" };
-      //   }
-      // },
     },
     {
       path: "/:pathMatch(.*)*",

@@ -11,6 +11,7 @@
   import axios from 'axios';
   
   export default {
+    props:[ 'name', 'surname', 'email' ],
     data() {
       return {
         clientToken: '',
@@ -54,6 +55,9 @@
             const response = await axios.post('http://localhost:8000/api/payment/process', {
               payment_method_nonce: payload.nonce,
               amount: this.amount,
+              name: this.name,
+              surname: this.surname,
+              email: this.email
             });
             if (response.data.success) {
               this.paymentResult = `Pagamento completato con successo! ID transazione: ${response.data.transaction_id}`;
@@ -62,6 +66,10 @@
             }
           } catch (error) {
             console.error('Errore:', error);
+          } finally {
+            this.instance.clearSelectedPaymentMethod();
+            this.$router.push({ name: 'home' });
+
           }
         });
       },
