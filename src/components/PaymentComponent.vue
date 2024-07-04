@@ -1,8 +1,7 @@
 <template>
     <div class="braintree-dropin-wrapper">
-      <h2>Fake Payment Form</h2>
       <div id="dropin-container"></div>
-      <button @click="submitPayment">Paga</button>
+      <button @click="submitPayment" class="btn btn-danger pay-button">Proceed to Payment</button>
       <div id="payment-result">{{ paymentResult }}</div>
     </div>
   </template>
@@ -74,6 +73,14 @@
   .braintree-dropin-wrapper {
     max-width: 400px;
     margin: auto;
+    text-align: center;
+  }
+  .pay-button {
+    text-transform: uppercase;
+    margin: 10px 0px 5px 0px;
+    font-weight: 600;
+    padding: 15px 20px 15px 20px;
+    border-radius: 50px;
   }
   </style>
   
