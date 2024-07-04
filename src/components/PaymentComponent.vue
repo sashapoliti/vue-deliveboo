@@ -2,7 +2,7 @@
   <div class="braintree-dropin-wrapper">
     <div id="dropin-container"></div>
     <div>
-      <button @click="$emit('submit-payment')" class="btn btn-danger pay-button">
+      <button @click="$emit('submit-payment')" class="btn btn-danger pay-button" :disabled="disabled">
         Proceed to Payment
       </button>
     </div>
