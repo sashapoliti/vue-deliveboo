@@ -93,7 +93,9 @@
     <RestaurantsFilter />
   </section>
 
-  <section>1</section>
+  <section id="social">
+    <img class="wave1" src="/images/social/wave_mix.svg" alt="">
+  </section>
 </template>
 
 <script>
@@ -305,5 +307,12 @@ export default {
   padding: 20px 10px;
   margin: 70px auto;
   border-radius: 50px;
+}
+
+#social {
+  background-color: $tertiary-color;
+  .wave1 {
+    width: 100%;
+  }
 }
 </style>
