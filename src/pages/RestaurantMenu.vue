@@ -46,7 +46,7 @@
           <button class="btn btn-danger red-button">Checkout</button>
         </div>
       </div>
-
+      <PaymentComponent />
 
 
       </div>
@@ -63,11 +63,13 @@
 import { store } from "../store";
 import axios from "axios";
 import CardComponent from "../components/CardComponent.vue";
+import PaymentComponent from '../components/PaymentComponent.vue';
 
 export default {
   name: "RestaurantMenu",
   components: {
-    CardComponent
+    CardComponent,
+    PaymentComponent
   },
   data() {
     return {
