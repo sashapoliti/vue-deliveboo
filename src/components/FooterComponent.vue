@@ -61,7 +61,98 @@
   </section>
 
   <!-- Footer section -->
-  <footer></footer>
+  <footer>
+    <div class="container">
+      <div class="links d-flex justify-content-between">
+        <ul>
+          <p>Uniamo le forze</p>
+          <li>
+            <a href="#" @click.prevent>Lavora con noi</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Munchi per i Partner</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Corrieri</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Munchi Business</a>
+          </li>
+        </ul>
+        <ul>
+          <p>Link di interesse</p>
+          <li>
+            <a href="#" @click.prevent>Chi siamo</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>FAQ</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Munchi Prime</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Blog</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Contattaci</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Sicurezza</a>
+          </li>
+        </ul>
+        <ul>
+          <p>Seguici</p>
+          <li>
+            <a href="#" @click.prevent>Facebook</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Twitter</a>
+          </li>
+          <li>
+            <a href="#" @click.prevent>Instagram</a>
+          </li>
+        </ul>
+        <ul>
+          <li class="apple">
+            <a href="#" @click.prevent>
+              <img
+                src="https://glovoapp.com/images/app_store/download-button-new.svg"
+                alt="App Store"
+              />
+            </a>
+          </li>
+          <li class="google">
+            <a href="#" @click.prevent>
+              <img
+                src="https://glovoapp.com/images/google_play/download-button-new.svg"
+                alt="Google Play"
+              />
+            </a>
+          </li>
+          <li>
+            <a class="text-uppercase" href="#" @click.prevent
+              >Termini e condizioni</a
+            >
+          </li>
+          <li>
+            <a class="text-uppercase" href="#" @click.prevent
+              >Politica sulla privacy</a
+            >
+          </li>
+          <li>
+            <a class="text-uppercase" href="#" @click.prevent
+              >Politica sui cookie</a
+            >
+          </li>
+          <li>
+            <a class="text-uppercase" href="#" @click.prevent>conformità</a>
+          </li>
+        </ul>
+      </div>
+      <div class="line"></div>
+      <div class="credits">&#169;2024 Classe123 BestTeam</div>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -119,7 +210,60 @@ footer {
   position: relative;
   margin-top: -1px;
   width: 100%;
-  height: 200px;
   background-color: $secondary-color;
+  .container {
+    padding: 0 100px;
+  }
+  .links {
+    padding-top: 50px;
+    ul {
+      text-align: center;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      p {
+        color: $tertiary-color;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      li {
+        margin: 4px 0 16px;
+        &.apple {
+          img {
+            width: 112px;
+          }
+        }
+        &.google {
+          background-color: #1d1d1d;
+          width: 112px;
+          height: 35px;
+          border-radius: 10px;
+          margin: 0 auto;
+          margin-bottom: 12px;
+        }
+        a {
+          color: $primary-color;
+          font-size: small;
+          transition: color 0.3s ease-in-out;
+          &:hover {
+            color: $primary-color-2;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .line {
+    margin: 25px 0;
+    width: 100%;
+    height: 0.5px;
+    background-color: $primary-color;
+  }
+  .credits {
+    color: $primary-color;
+    padding-bottom: 40px;
+    font-size: 0.6rem;
+  }
 }
 </style>
