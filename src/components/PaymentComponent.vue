@@ -77,6 +77,7 @@ export default {
           console.error('Errore:', error);
           // this.$router.push({ name: 'home' });
         } finally {
+          this.$router.push({ name: 'home' });
           this.instance.clearSelectedPaymentMethod();
           this.disabled = false;
         }
