@@ -78,9 +78,8 @@
         >
           <div class="text-center">
             <div>
-              <img src="" alt="Nessun filtro selezionato" />
+              <img class="w-75" src="/images/filter_component/no_filter.png" alt="Nessun filtro selezionato" />
             </div>
-            <p>Non ci sono filtri selezionati...</p>
           </div>
         </div>
 
