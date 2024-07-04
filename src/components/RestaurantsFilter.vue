@@ -20,7 +20,7 @@
             class="checkmark d-flex justify-content-center align-items-center"
           >
             <img
-              src="https://images.deliveryhero.io/image/customer-assets-glovo/search_filters/10eac1b715a4fb5801b1523d1064be6ae5baa4e08b1b704c301ef4b4ffbfca65?t=W3siYXV0byI6eyJxIjoibG93In19XQ=="
+              :src="item.image"
               alt=""
             />
           </div>
