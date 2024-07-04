@@ -69,7 +69,7 @@ export default {
         this.errors.name = 'Name must be at least 3 characters.';
       } else if (this.name.length > 50) {
         this.errors.name = 'Name must be at most 50 characters.';
-      } else if (!/^[a-zA-Z]+$/.test(this.name)) {
+      } else if (!/^[a-zA-Z-']+$/.test(this.name)) {
         this.errors.name = 'Name must only contain letters.';
       }
 
@@ -79,7 +79,7 @@ export default {
         this.errors.surname = 'Surname must be at least 3 characters.';
       }else if (this.surname.length > 50) {
         this.errors.surname = 'Surname must be at most 50 characters.';
-      }else if (!/^[a-zA-Z]+$/.test(this.surname)) {
+      } else if (!/^[a-zA-Z-']+$/.test(this.surname)) {
         this.errors.surname = 'Surname must only contain letters.';
       }
 
