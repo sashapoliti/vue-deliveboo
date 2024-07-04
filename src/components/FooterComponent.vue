@@ -83,7 +83,7 @@ export default {
       position: absolute;
       width: 350px;
       height: 120px;
-      top: calc(50% - 50px);
+      top: calc(50%);
       left: calc(50% - 175px);
       background-color: $primary-color-2;
       color: $tertiary-color;
