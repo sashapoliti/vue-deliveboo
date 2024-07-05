@@ -18,17 +18,19 @@
 
       <div class="container d-flex">
         <div class="cards-container">
-          <ProductList />
+          <ProductList :products="products" @add-to-cart="addToCart"/>
         </div>
 
         <div class="cart-container">
-          <ShoppingCart />
+          <h2>Cart</h2>
+          <p>Contenuto</p>
+          <div class="linea"></div>
+          <ShoppingCart :cart="store.cart" @remove-from-cart="removeFromCart"/>
         </div>
       </div>
 
     </div>
   </div>
-
 </template>
 
 <script>
@@ -36,6 +38,7 @@ import { store } from "../store";
 import axios from "axios";
 import ProductList from "../components/ProductList.vue";
 import ShoppingCart from "../components/ShoppingCart.vue";
+
 export default {
   name: "RestaurantMenu",
   components: {
@@ -45,7 +48,15 @@ export default {
   data() {
     return {
       store,
+      products: [
+        { id: 1, name: 'Product 1', price: 10, quantity: 1 },
+        { id: 2, name: 'Product 2', price: 20, quantity: 1 },
+        { id: 3, name: 'Product 3', price: 30, quantity: 1 }
+      ],
     };
+  },
+  created() {
+    this.loadCart();
   },
   computed: {
     getImage() {
@@ -53,6 +64,31 @@ export default {
     }
   },
   methods: {
+    addToCart(product) {
+      const cartItem = store.cart.find(item => item.product.id === product.id);
+      if (cartItem) {
+        cartItem.quantity += product.quantity;
+      } else {
+        store.cart.push({ product: { ...product }, quantity: product.quantity });
+      }
+      this.saveCart();
+    },
+    removeFromCart(product) {
+      const index = store.cart.findIndex(item => item.product.id === product.id);
+      if (index !== -1) {
+        store.cart.splice(index, 1);
+      }
+      this.saveCart();
+    },
+    saveCart() {
+      localStorage.setItem('cart', JSON.stringify(store.cart));
+    },
+    loadCart() {
+      const cart = localStorage.getItem('cart');
+      if (cart) {
+        store.cart = JSON.parse(cart);
+      }
+    },
     setDefaultImage(event) {
       event.target.src = store.api.defaultImg;
     }
@@ -71,9 +107,8 @@ export default {
           next({ name: "not-found" });
         });
     }
-  },
+  }
 };
-
 </script>
 
 <style lang="scss" scoped>
@@ -89,7 +124,6 @@ export default {
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-
 
     h1 {
       font-size: 5rem;
@@ -133,6 +167,15 @@ export default {
 
   .cart-container {
     width: 20%;
+    margin-left: 30px;
+
+    .linea {
+    width: 100%;
+    height: 1px;
+    background-color: #e6d4c3;
+    }
   }
 }
 </style>
+
+

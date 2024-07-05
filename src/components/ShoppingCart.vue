@@ -1,30 +1,50 @@
 <template>
-    <div>
-        <h2>Cart</h2>
-        <p>Contenuto</p>
-        <div class="linea"></div>
-        <div class="d-flex justify-content-between my-3">
-            <h5>Totale</h5>
-            <h5>10 €</h5>
+    <div class="container">
+      <div v-if="store.cart.length === 0" class="text-center my-3">Your cart is empty</div>
+      <div v-else>
+        <div v-for="item in store.cart" :key="item.product.id" class="mt-3">
+          <h3>{{ item.product.name }} x {{ item.quantity }}</h3>
+          <button @click="removeFromCart(item.product)">Remove</button>
         </div>
-        <div class="text-center">
-            <button class="btn btn-danger red-button" @click="$router.push({ name: 'checkout' })">
-                Checkout
-            </button>
-        </div>
+        <h5 class="my-3">Totale: {{ totalPrice }} €</h5>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-danger red-button" @click="$router.push({ name: 'checkout' })" :disabled="store.cart.length === 0">
+          Checkout
+        </button>
+      </div>
     </div>
-</template>
-
-<script>
-export default {
+  </template>
+  
+  <script>
+  import { store } from "../store";
+  export default {
     name: "ShoppingCart",
-};
-</script>
-
-<style lang="scss" scoped>
-.linea {
-      width: 100%;
-      height: 1px;
-      background-color: #e6d4c3;
+    data() {
+      return {
+        store
+      };
+    },
+    props: {
+      cart: Array
+    },
+    computed: {
+      totalPrice() {
+        const total = this.cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
+        this.store.data.totalPrice = total;
+        console.log(this.store.data.totalPrice);
+        return total; 
+      }
+    },
+    methods: {
+      removeFromCart(product) {
+        this.$emit('remove-from-cart', product);
+      },
     }
-</style>
+  };
+  </script>
+  
+  <style lang="scss" scoped>
+
+  </style>
+  

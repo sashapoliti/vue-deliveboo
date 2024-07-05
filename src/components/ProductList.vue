@@ -1,15 +1,21 @@
 <template>
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 mb-4" v-for="plate in store.data.restaurant.plates" :key="plate.id">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" v-for="product in products" :key="product.id">
             <div class="card">
-                <img :src="'http://127.0.0.1:8000/storage/' + plate.image" @error="setDefaultImage()"
-                    class="card-img-top" :alt="plate.name">
+                <!-- <img :src="'http://127.0.0.1:8000/storage/' + product.image" @error="setDefaultImage" class="card-img-top"
+                    :alt="product.name"> -->
                 <div class="card-body">
-                    <!-- <p>{{ plate?.category }}</p> -->
-                    <h3 class="card-title">{{ plate.name }}</h3>
-                    <h5>{{ plate.price }} €</h5>
-                    <button class="btn btn-danger red-button">
-                        Add to cart
+                    <h3 class="card-title">{{ product.name }}</h3>
+                    <div class="d-flex justify-content-between">
+                        <h5>{{ product.price }} €</h5>
+                        <div>
+                            <button @click="updateQuantity(product, product.quantity - 1)">-</button>
+                            <span>{{ product.quantity }}</span>
+                            <button @click="updateQuantity(product, product.quantity + 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-danger red-button" @click="addToCart(product)">
+                        Aggiungi al carrello
                     </button>
                 </div>
             </div>
@@ -19,19 +25,34 @@
 
 <script>
 import { store } from "../store";
+
 export default {
+    props: {
+        products: Array
+    },
     name: "ProductList",
     data() {
         return {
             store
-        }
+        };
+    },
+    methods: {
+        updateQuantity(product, quantity) {
+            if (quantity < 1) {
+                quantity = 1;
+            }
+            product.quantity = quantity;
+        },
+        addToCart(product) {
+            this.$emit('add-to-cart', product);
+        },
     },
     computed: {
         getImage() {
             return store.data.restaurant.image ? `${store.api.imgBasePath}${store.data.restaurant.image}` : store.api.defaultImg;
         }
-    },
-}
+    }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -29,16 +29,11 @@
       <h2>Your order is ready</h2>
       <p class="mx-1">Here are the details of your order:</p>
       <div class="product-container">
-        <div>Bacon Cheeseburger<strong class="mx-3">x 2</strong></div>
-        <div>€ 10.00</div>
-      </div>
-      <div class="product-container">
-        <div>Bacon Cheeseburger<strong class="mx-3">x 2</strong></div>
-        <div>€ 10.00</div>
+        <ShoppingCart :cart="store.cart" @add-to-cart="addToCart" @remove-from-cart="removeFromCart" />
       </div>
       <div class="total-container">
         <div>Total</div>
-        <div>€ 20.00</div>
+        <div>{{ formatCurrency(totalPrice) }} €</div>
       </div>
       <h2 class="mt-5">Payment</h2>
       <p class="mx-1">Choose your payment method:</p>
@@ -49,18 +44,54 @@
 
 <script>
 import PaymentComponent from "../components/PaymentComponent.vue";
+import ShoppingCart from "../components/ShoppingCart.vue";
+import { store } from "../store";
 
 export default {
   name: "Checkout",
   data() {
     return {
+      store,
       name: '',
       surname: '',
       email: '',
       errors: {}
     };
   },
+  created() {
+    this.loadCart();
+  },
+  computed: {
+    totalPrice() {
+      return this.store.cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    }
+  },
   methods: {
+    addToCart(product) {
+      const cartItem = this.store.cart.find(item => item.product.id === product.id);
+      if (cartItem) {
+        cartItem.quantity += product.quantity;
+      } else {
+        this.store.cart.push({ product: { ...product }, quantity: product.quantity });
+      }
+      this.saveCart();
+    },
+    removeFromCart(product) {
+      const index = this.store.cart.findIndex(item => item.product.id === product.id);
+      if (index !== -1) {
+        this.store.cart.splice(index, 1);
+      }
+      this.saveCart();
+    },
+    saveCart() {
+      localStorage.setItem('cart', JSON.stringify(this.store.cart));
+    },
+    loadCart() {
+      const cart = localStorage.getItem('cart');
+      if (cart) {
+        this.store.cart = JSON.parse(cart);
+      }
+    },
     validateForm() {
       this.errors = {};
       if (!this.name) {
@@ -112,10 +143,14 @@ export default {
       } else {
         this.scrollToFirstError();
       }
+    },
+    formatCurrency(value) {
+      return `$${value.toFixed(2)}`;
     }
   },
   components: {
-    PaymentComponent
+    PaymentComponent,
+    ShoppingCart
   }
 };
 </script>
@@ -147,5 +182,6 @@ export default {
   }
 }
 </style>
+
 
   

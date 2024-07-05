@@ -13,14 +13,15 @@
 <script>
 import dropin from 'braintree-web-drop-in';
 import axios from 'axios';
+import { store } from "../store";
 
 export default {
   props: ['name', 'surname', 'email'],
   data() {
     return {
+      store,
       clientToken: '',
       paymentResult: '',
-      amount: 10,
       disabled: false,
     };
   },
@@ -61,7 +62,7 @@ export default {
         try {
           const response = await axios.post('http://localhost:8000/api/payment/process', {
             payment_method_nonce: payload.nonce,
-            amount: this.amount,
+            amount: this.store.data.totalPrice,
             name: this.name,
             surname: this.surname,
             email: this.email
