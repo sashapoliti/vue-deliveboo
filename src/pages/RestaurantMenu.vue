@@ -47,9 +47,6 @@ export default {
       store,
     };
   },
-  mounted() {
-    console.log(store.data.restaurant.plates);
-  },
   computed: {
     getImage() {
       return store.data.restaurant.image ? `${store.api.imgBasePath}${store.data.restaurant.image}` : store.api.defaultImg;
