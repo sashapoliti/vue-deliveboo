@@ -51,6 +51,7 @@ export default {
       });
     },
     async submitPayment() {
+      this.dbOrder();
       this.disabled = true;
       this.instance.requestPaymentMethod(async (err, payload) => {
         if (err) {
@@ -81,8 +82,29 @@ export default {
           this.$router.push({ name: 'home' });
           this.instance.clearSelectedPaymentMethod();
           this.disabled = false;
+          /* this.dbOrder(); */
         }
       });
+    },
+    dbOrder() {
+      const data = {
+        restaurant_id: this.store.data.restaurant.id,
+        customer_name: this.name,
+        customer_surname: this.surname,
+        customer_email: this.email,
+        customer_phone: '12345',
+        customer_address: 'Via Pizza 1',
+        total_price: this.store.data.totalPrice,
+        cart: this.store.cart
+      };
+           
+  axios.post('http://localhost:8000/api/order', data)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error('Errore durante l\'invio dell\'ordine:', error);
+    }).finally(() => {});
     }
   }
 };
