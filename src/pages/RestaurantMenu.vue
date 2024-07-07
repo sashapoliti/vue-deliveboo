@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="img-container">
-      <img :src="getImage" @error="setDefaultImage" :alt="store.data.restaurant.name">
+      <img :src="getImage" @error="setDefaultImage" :alt="store.data.restaurant.name" />
       <div id="title">
         <h1>{{ store.data.restaurant.name }}</h1>
         <h5>Start your order and enjoy</h5>
       </div>
     </div>
     <div class="wave">
-      <img src="/images/wave.svg" alt="wave" class="wave-img">
+      <img src="/images/wave.svg" alt="wave" class="wave-img" />
     </div>
 
     <div class="container-bottom container">
@@ -18,17 +18,16 @@
 
       <div class="container d-flex">
         <div class="cards-container">
-          <ProductList :products="products" @add-to-cart="addToCart"/>
+          <ProductList :products="products" @add-to-cart="addToCart" />
         </div>
 
         <div class="cart-container">
           <h2>Cart</h2>
           <p>Contenuto</p>
           <div class="linea"></div>
-          <ShoppingCart :cart="store.cart" @remove-from-cart="removeFromCart"/>
+          <ShoppingCart :cart="store.cart" @remove-from-cart="removeFromCart"  />
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -48,11 +47,7 @@ export default {
   data() {
     return {
       store,
-      products: [
-        { id: 1, name: 'Product 1', price: 10, quantity: 1 },
-        { id: 2, name: 'Product 2', price: 20, quantity: 1 },
-        { id: 3, name: 'Product 3', price: 30, quantity: 1 }
-      ],
+      products: [],
     };
   },
   created() {
@@ -91,6 +86,12 @@ export default {
     },
     setDefaultImage(event) {
       event.target.src = store.api.defaultImg;
+    },
+    getProducts() {
+      this.store.data.restaurant.plates.forEach(element => {
+        element.quantity = 1;
+        this.products.push(element);
+      });
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -106,7 +107,11 @@ export default {
         .catch(() => {
           next({ name: "not-found" });
         });
-    }
+    }    
+  },
+  mounted() {
+    this.getProducts();
+    console.log(this.products);
   }
 };
 </script>
@@ -170,12 +175,10 @@ export default {
     margin-left: 30px;
 
     .linea {
-    width: 100%;
-    height: 1px;
-    background-color: #e6d4c3;
+      width: 100%;
+      height: 1px;
+      background-color: #e6d4c3;
     }
   }
 }
 </style>
-
-

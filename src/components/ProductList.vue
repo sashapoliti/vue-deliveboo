@@ -1,9 +1,9 @@
 <template>
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 mb-4" v-for="product in products" :key="product.id">
+        <div class="col-12 col-md-6 col-lg-4 mb-4" v-for="product in store.data.restaurant.plates" :key="product.id">
             <div class="card">
-                <!-- <img :src="'http://127.0.0.1:8000/storage/' + product.image" @error="setDefaultImage" class="card-img-top"
-                    :alt="product.name"> -->
+                <img :src="'http://127.0.0.1:8000/storage/' + product.image" @error="setDefaultImage" class="card-img-top"
+                    :alt="product.name">
                 <div class="card-body">
                     <h3 class="card-title">{{ product.name }}</h3>
                     <div class="d-flex justify-content-between">
