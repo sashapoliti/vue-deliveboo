@@ -1,6 +1,10 @@
 <template>
+   
   <!-- Jumbotron -->
   <div id="jumbotron">
+    <div v-if="store.data.emptyCart" class="alert alert-warning">
+      {{ store.data.emptyCart }}
+    </div>
     <transition name="slide" mode="out-in">
       <div class="city" :key="currentCityIndex">
         <img :src="currentCityImage" alt="Immagine della città" />
@@ -99,6 +103,8 @@
 <script>
 import RestaurantsFilter from "../components/RestaurantsFilter.vue";
 
+import { store } from "../store";
+
 export default {
   name: "HomePage",
   components: {
@@ -106,6 +112,7 @@ export default {
   },
   data() {
     return {
+      store,
       cityImages: [
         "/images/jumbotron/city1.png",
         "/images/jumbotron/city2.png",
@@ -147,6 +154,15 @@ export default {
       }
     },
   },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (vm.store.data.emptyCart) {
+        setTimeout(() => {
+          vm.store.data.emptyCart= '';
+        }, 5000);
+      }
+    });
+  }
 };
 </script>
 

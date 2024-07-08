@@ -12,6 +12,7 @@ export const store = reactive({
         types: [],
         restaurant: {},
         totalPrice: 0,
+        emptyCart: ''
     },
     cart: [],
     functions:{
