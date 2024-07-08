@@ -67,13 +67,18 @@ export default {
 .card {
     border-radius: 20px;
     overflow: hidden;
-}
-
-.card-body {
+    height: 470px;
+    img{
+        height: 270px;
+    }
+    .card-body {
     margin: 10px 15px 10px 15px;
 }
 
 .card-title {
     font-weight: 800;
 }
+}
+
+
 </style>
