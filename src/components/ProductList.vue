@@ -1,24 +1,48 @@
 <template>
-<!-- Modal -->
-<div class="modal fade" :class="{ show: showModal }" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ops..!</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Sembra tu abbia nel tuo carrello dei piatti del ristorante {{ store.restaurantcart.name }}. <br>
-        Torna indietro oppure svuota il carrello e continua su {{ store.data.restaurant.name }}!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <!-- Modal -->
+  <div
+    v-if="
+      store.restaurantcart &&
+      store.restaurantcart.id !== store.data.restaurant.id &&
+      store.restaurantcart.id !== ''
+    "
+    class="modal fade"
+    :class="{ show: showModal }"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Ops..!</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Sembra tu abbia nel tuo carrello dei piatti del ristorante
+          {{ store.restaurantcart.name }}. <br />
+          Torna indietro oppure svuota il carrello e continua su
+          {{ store.data.restaurant.name }}!
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 
   <div class="row">
     <div
@@ -90,7 +114,7 @@ export default {
   data() {
     return {
       store,
-      showModal: false
+      showModal: false,
     };
   },
   mounted() {
@@ -98,7 +122,11 @@ export default {
   },
   methods: {
     checkRestaurantCart() {
-      if (store.restaurantcart && store.restaurantcart.id !== store.data.restaurant.id && store.restaurantcart.id !== '') {
+      if (
+        store.restaurantcart &&
+        store.restaurantcart.id !== store.data.restaurant.id &&
+        store.restaurantcart.id !== ""
+      ) {
         this.showModal = true;
       } else {
         this.showModal = false;

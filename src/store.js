@@ -25,7 +25,6 @@ export const store = reactive({
           name: store.data.restaurant.name,
           slug: store.data.restaurant.slug,
         };
-        console.log(store.restaurantcart.id);
       }
       const cartItem = store.cart.find(
         (item) => item.product.id === product.id
@@ -78,7 +77,6 @@ export const store = reactive({
       }
       if (store.cart.length === 0) {
         store.restaurantcart = null;
-        console.log(store.restaurantcart.id);
     }
       store.functions.saveCart();
     },
