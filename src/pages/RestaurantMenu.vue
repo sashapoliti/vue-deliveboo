@@ -73,6 +73,12 @@ export default {
         element.quantity = 1;
         this.products.push(element);
       });
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -88,11 +94,12 @@ export default {
         .catch(() => {
           next({ name: "not-found" });
         });
-    }    
+    }
   },
   mounted() {
     this.getProducts();
     console.log(this.products);
+    this.scrollToTop();
   }
 };
 </script>
