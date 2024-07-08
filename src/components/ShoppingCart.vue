@@ -6,9 +6,9 @@
         <h3>{{ item.product.name }} x {{ item.quantity }}</h3>
         <button @click="store.functions.removeFromCart(item.product)">Remove</button>
         <div>
-          <button @click="updateQuantity(item, item.quantity - 1)">-</button>
+          <button @click="store.functions.updateQuantity(item.product, item.quantity - 1)">-</button>
           <span>{{ item.quantity }}</span>
-          <button @click="updateQuantity(item, item.quantity + 1)">+</button>
+          <button @click="store.functions.updateQuantity(item.product, item.quantity + 1)">+</button>
         </div>
       </div>
 
@@ -40,12 +40,10 @@ export default {
     }
   },
   methods: {
-    updateQuantity(product, quantity) {
-      if (quantity < 1) {
-        quantity = 1;
-      }
-      product.quantity = quantity;
-    },
+    // updateQuantity(product, quantity) {
+    //   store.functions.updateQuantity(product, quantity);
+    // }
+    
     // removeFromCart(product) {
     //   this.$emit('remove-from-cart', product);
     // },

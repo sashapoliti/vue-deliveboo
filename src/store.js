@@ -40,5 +40,14 @@ export const store = reactive({
               store.cart = JSON.parse(cart);
             }
           },
+          updateQuantity: (product, quantity) => {
+            const cartItem = store.cart.find(item => item.product.id === product.id);
+            if (cartItem && quantity > 0) {
+              cartItem.quantity = quantity;
+            } else if (cartItem && quantity <= 0) {
+              store.functions.removeFromCart(product);
+            }
+            store.functions.saveCart();
+          }
     }
 });
