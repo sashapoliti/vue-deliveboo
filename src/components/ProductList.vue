@@ -16,12 +16,12 @@
           <h3 class="card-title">{{ product.name }}</h3>
           <div class="d-flex justify-content-between">
             <h5>{{ product.price }} €</h5>
-            <div>
-              <button @click="updateQuantity(product, product.quantity - 1)">
+            <div class="changeQuantity d-flex align-items-center justify-content-center">
+              <button class="changeMinus" @click="updateQuantity(product, product.quantity - 1)">
                 -
               </button>
-              <span>{{ product.quantity }}</span>
-              <button @click="updateQuantity(product, product.quantity + 1)">
+              <span class="mx-2">{{ product.quantity }}</span>
+              <button class="changePlus" @click="updateQuantity(product, product.quantity + 1)">
                 +
               </button>
             </div>
