@@ -65,7 +65,9 @@ export default {
             amount: this.store.data.totalPrice,
             name: this.name,
             surname: this.surname,
-            email: this.email
+            email: this.email,
+            phone: this.phone,
+            address: this.address
           });
           if (response.data.success) {
             this.paymentResult = `Pagamento completato con successo! ID transazione: ${response.data.transaction_id}`;
@@ -78,11 +80,13 @@ export default {
           console.error('Errore:', error);
           // this.$router.push({ name: 'home' });
         } finally {
-          this.$router.push({ name: 'home' });
-          this.instance.clearSelectedPaymentMethod();
-          this.disabled = false;
           this.dbOrder();
-          /* this.dbOrder(); */
+          store.cart = [];
+          store.data.totalPrice = 0;  
+          store.restaurantcart = '';
+          this.disabled = false;
+          this.$router.push({ name: 'home' });
+          store.functions.saveCart();
         }
       });
     },

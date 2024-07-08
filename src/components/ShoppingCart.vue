@@ -37,8 +37,8 @@
           </div>
         </div>
 
-        <button class="remove-button" @click="store.functions.removeFromCart(item.product)">
-          <i class="fa-solid fa-xmark"></i>
+        <button class="remove-button " @click="store.functions.removeFromCart(item.product) ">
+          <i class="fa-solid fa-xmark "></i>
         </button>
       </div>
 
