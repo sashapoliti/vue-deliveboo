@@ -1,6 +1,9 @@
 <template>
-    <div v-if="store.restaurantcart != store.data.restaurant.id && store.restaurantcart != '' "  class="alert alert-warning">
+    <div v-if="store.restaurantcart != store.data.restaurant.slug && store.restaurantcart != '' "  class="alert alert-warning">
+      <div class="d-flex justify-content-between">
         Puoi solo ordinare un ristorante alla volta
+        <!-- <RouterLink :to="{ name: 'restaurant', params: { slug: store.restaurantcart } }">Ritorna al ristorante</RouterLink> -->
+      </div>
     </div>
   <div class="row">
     <div
@@ -20,18 +23,18 @@
           <div class="d-flex justify-content-between">
             <h5>{{ product.price }} €</h5>
             <div class="changeQuantity d-flex align-items-center justify-content-center">
-              <button class="changeMinus" @click="updateQuantity(product, product.quantity - 1)">
+              <button class="changeMinus" @click="updateQuantity(product, product.quantity - 1)" >
                 -
               </button>
               <span class="mx-2">{{ product.quantity }}</span>
-              <button class="changePlus" @click="updateQuantity(product, product.quantity + 1)">
+              <button class="changePlus" @click="updateQuantity(product, product.quantity + 1)" >
                 +
               </button>
             </div>
           </div>
           <div class="d-flex justify-content-center">
             <button
-              class="btn btn-danger red-button " :class="{ disabled: store.restaurantcart != store.data.restaurant.id && store.restaurantcart != '' }"
+              class="btn btn-danger red-button " :class="{ disabled: store.restaurantcart != store.data.restaurant.slug && store.restaurantcart != '' }"
               @click="store.functions.addToCart(product)" >
               Aggiungi al carrello
             </button>

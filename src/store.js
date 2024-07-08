@@ -19,7 +19,7 @@ export const store = reactive({
     functions:{
         addToCart(product) {
             if(store.restaurantcart == ''){
-               store.restaurantcart = store.data.restaurant.id;
+               store.restaurantcart = store.data.restaurant.slug;
                console.log(store.restaurantcart);
             }
             const cartItem = store.cart.find(item => item.product.id === product.id);
@@ -36,18 +36,23 @@ export const store = reactive({
               store.cart.splice(index, 1);
             }
             if(store.cart.length == 0){
-              store.restaurantcart = ``;
+              store.restaurantcart = '';
               console.log(store.restaurantcart);
             }
             this.saveCart();
           },
           saveCart() {
             localStorage.setItem('cart', JSON.stringify(store.cart));
+            localStorage.setItem('restaurantcart', store.restaurantcart); 
           },
           loadCart() {
             const cart = localStorage.getItem('cart');
             if (cart) {
               store.cart = JSON.parse(cart);
+            }
+            const restaurantcart = localStorage.getItem('restaurantcart');
+            if (restaurantcart) {
+              store.restaurantcart = restaurantcart;
             }
           },
           updateQuantity: (product, quantity) => {
@@ -58,7 +63,7 @@ export const store = reactive({
               store.functions.removeFromCart(product);
             }
             if(store.cart.length == 0){
-              store.restaurantcart = ``;
+              store.restaurantcart = '';
               console.log(store.restaurantcart);
             }
             store.functions.saveCart();
