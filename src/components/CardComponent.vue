@@ -6,7 +6,12 @@
         @error="setDefaultImage"
         class="card-img-top"
         :alt="restaurant.name"
+        loading="lazy"
+        ref="restaurantImage"
       />
+      <div class="badges">
+        <span class="badge rounded-pill" v-for="typeEl in restaurant.types">{{ typeEl.name }}</span>
+      </div>
     </div>
     <div class="card-body">
       <p class="card-title fw-bold">{{ restaurant.name }}</p>
@@ -37,10 +42,22 @@ export default {
       event.target.src = this.store.api.defaultImg;
     },
   },
+  mounted() {
+    const img = new Image();
+    img.src = this.getImage;
+    img.onload = () => {
+      this.$refs.restaurantImage.src = img.src;
+    };
+    img.onerror = () => {
+      this.setDefaultImage({ target: this.$refs.restaurantImage });
+    };
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/partials/_variables.scss";
+
 .card {
   border: 0;
   border-radius: 0;
@@ -50,6 +67,18 @@ export default {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
+    .badges {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      z-index: 1;
+      .badge {
+        background-color: $tertiary-color;
+        color: $primary-color;
+        font-size: 0.7rem;
+        margin: 0 2px;
+      }
+    }
   }
 
   .card-img-top {
