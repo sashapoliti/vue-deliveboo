@@ -1,6 +1,6 @@
 <template>
   <!-- Modal -->
-  <div
+  <!-- <div
     v-if="
       store.restaurantcart &&
       store.restaurantcart.id !== store.data.restaurant.id &&
@@ -42,7 +42,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <div v-if="
+      store.restaurantcart &&
+      store.restaurantcart.id !== store.data.restaurant.id &&
+      store.restaurantcart.id !== ''
+    " class="alert alert-warning">
+      Non puoi ordinare da piu di un ristorante
+    </div>
 
   <div class="row">
     <div
