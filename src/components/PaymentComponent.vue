@@ -3,7 +3,7 @@
     <div id="dropin-container"></div>
     <div>
       <button @click="$emit('submit-payment')" class="btn btn-danger pay-button" :disabled="disabled">
-        Proceed to Payment
+        Procedi al pagamento
       </button>
     </div>
     <div id="payment-result">{{ paymentResult }}</div>

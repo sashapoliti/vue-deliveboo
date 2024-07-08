@@ -1,22 +1,22 @@
 <template>
   <div class="container-checkout card rounded-5 my-5">
     <div class="d-flex justify-content-center mb-3 mt-5">
-      <h1>Checkout</h1>
+      <h1>Carrello</h1>
     </div>
     <div class="container-bottom">
-      <h2>Your details</h2>
-      <p class="mx-1">Fields marked with <strong class="text-danger">*</strong> are required</p>
+      <h2>I tuoi dettagli</h2>
+      <p class="mx-1">I campi marcati con <strong class="text-danger">*</strong> sono obbligatori</p>
       <div class="my-3 mb-5 mt-4">
         <div class="container">
           <div class="row">
             <div class="col-6">
-              <label for="name">Name <strong class="text-danger">*</strong></label>
-              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3" placeholder="Name">
+              <label for="name">Nome <strong class="text-danger">*</strong></label>
+              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3" placeholder="Nome">
               <span v-if="errors.name" class="text-danger">{{ errors.name }}</span>
             </div>
             <div class="col-6">
-              <label for="surname">Surname <strong class="text-danger">*</strong></label>
-              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50" class="form-control my-3" placeholder="Surname">
+              <label for="surname">Cognome <strong class="text-danger">*</strong></label>
+              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50" class="form-control my-3" placeholder="Cognome">
               <span v-if="errors.surname" class="text-danger">{{ errors.surname }}</span>
             </div>
           </div>
@@ -26,17 +26,13 @@
         </div>
       </div>
 
-      <h2>Your order is ready</h2>
-      <p class="mx-1">Here are the details of your order:</p>
+      <h2>Il tuo ordine è quasi pronto</h2>
+      <p class="mx-1">Qui i dettagli del tuo ordine:</p>
       <div class="product-container">
         <ShoppingCart :cart="store.cart" @add-to-cart="addToCart" @remove-from-cart="removeFromCart" />
       </div>
-      <div class="total-container">
-        <div>Total</div>
-        <div>{{ formatCurrency(totalPrice) }} €</div>
-      </div>
-      <h2 class="mt-5">Payment</h2>
-      <p class="mx-1">Choose your payment method:</p>
+      <h2 class="mt-5">Pagamento</h2>
+      <p class="mx-1">Scegli il tuo metodo di pagamento:</p>
       <PaymentComponent ref="paymentComponent" :name="name" :surname="surname" :email="email" @submit-payment="submitPayment" />
     </div>
   </div>
