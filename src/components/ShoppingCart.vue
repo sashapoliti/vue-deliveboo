@@ -4,52 +4,41 @@
       Il carrello è vuoto
     </div>
     <div class="cart-container" v-else>
-      <div
-        v-for="item in store.cart"
-        :key="item.product.id"
-        class="cart-item mt-3"
-      >
+      <div v-for="item in store.cart" :key="item.product.id" class="cart-item mt-3">
         <div class="info d-flex align-items-center">
           <div class="img-container me-2">
-            <img :src="item.product.image ? 'http://127.0.0.1:8000/storage/' + item.product.image : this.store.api.defaultImg" :alt="item.product.name" />
+            <img :src="item.product.image
+                ? 'http://127.0.0.1:8000/storage/' + item.product.image
+                : this.store.api.defaultImg"    @error="setDefaultImage" :alt="item.product.name" />
           </div>
           <div>
-            <h3 class="text-center">{{ item.product.name }} x {{ item.quantity }}</h3>
-            <div
-              class="changeQuantity d-flex align-items-center justify-content-center"
-            >
+            <h3 class="text-center">
+              {{ item.product.name }} x {{ item.quantity }}
+            </h3>
+            <div class="changeQuantity d-flex align-items-center justify-content-center">
               <span class="me-2">{{ item.product.price * item.quantity }} €</span>
-              <button
-                class="changeMinus"
-                @click="
-                  store.functions.updateQuantity(
-                    item.product,
-                    item.quantity - 1
-                  )
-                "
-              >
+              <button class="changeMinus" @click="
+                store.functions.updateQuantity(
+                  item.product,
+                  item.quantity - 1
+                )
+                ">
                 -
               </button>
               <span class="mx-2">{{ item.quantity }}</span>
-              <button
-                class="changePlus"
-                @click="
-                  store.functions.updateQuantity(
-                    item.product,
-                    item.quantity + 1
-                  )
-                "
-              >
+              <button class="changePlus" @click="
+                store.functions.updateQuantity(
+                  item.product,
+                  item.quantity + 1
+                )
+                ">
                 +
               </button>
             </div>
           </div>
         </div>
 
-        <button
-          class="remove-button"
-          @click="store.functions.removeFromCart(item.product)"
-        >
+        <button class="remove-button" @click="store.functions.removeFromCart(item.product)">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -80,15 +69,12 @@ export default {
       this.store.data.totalPrice = total;
       console.log(this.store.data.totalPrice);
       return total;
-    }
+    },
   },
   methods: {
-    // updateQuantity(product, quantity) {
-    //   store.functions.updateQuantity(product, quantity);
-    // }
-    // removeFromCart(product) {
-    //   this.$emit('remove-from-cart', product);
-    // },
+    setDefaultImage(event) {
+      event.target.src = store.api.defaultImg;
+    },
   },
 };
 </script>
@@ -101,17 +87,21 @@ export default {
       height: 80px;
       overflow: hidden;
       border-radius: 50%;
+
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
     }
+
     h3 {
       width: 164px;
       font-size: 1.1rem;
     }
+
     position: relative;
+
     button.remove-button {
       position: absolute;
       top: 0;

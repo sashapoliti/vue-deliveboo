@@ -60,9 +60,9 @@ export default {
       }
       product.quantity = quantity;
     },
-    // addToCart(product) {
-    //     this.$emit('add-to-cart', product);
-    // },
+    setDefaultImage(event) {
+      event.target.src = store.api.defaultImg;
+    },
   },
   computed: {
     getImage() {
