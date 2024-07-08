@@ -7,7 +7,7 @@
     >
       <div class="card">
         <img
-          :src="'http://127.0.0.1:8000/storage/' + product.image"
+          :src="product.image ? 'http://127.0.0.1:8000/storage/' + product.image : this.store.api.defaultImg"
           @error="setDefaultImage"
           class="card-img-top"
           :alt="product.name"
@@ -66,8 +66,8 @@ export default {
   },
   computed: {
     getImage() {
-      return store.data.restaurant.image
-        ? `${store.api.imgBasePath}${store.data.restaurant.image}`
+      return this.product.image
+        ? `${store.api.imgBasePath}${this.product.image}`
         : store.api.defaultImg;
     },
     sortedPlates() {
@@ -92,6 +92,7 @@ export default {
   height: 470px;
   img {
     height: 270px;
+    object-fit: cover;
   }
   .card-body {
     margin: 10px 15px 10px 15px;
