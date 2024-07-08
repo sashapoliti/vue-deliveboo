@@ -3,7 +3,6 @@
     <div class="image-container">
       <img
         :src="getImage"
-        @error="setDefaultImage"
         class="card-img-top"
         :alt="restaurant.name"
         loading="lazy"
@@ -41,20 +40,11 @@ export default {
     }
   },
   methods: {
-    setDefaultImage(event) {
+    /* setDefaultImage(event) {
       event.target.src = this.store.api.defaultImg;
-    },
+    }, */
   },
-  mounted() {
-    const img = new Image();
-    img.src = this.getImage;
-    img.onload = () => {
-      this.$refs.restaurantImage.src = img.src;
-    };
-    img.onerror = () => {
-      this.setDefaultImage({ target: this.$refs.restaurantImage });
-    };
-  },
+  mounted() {},
 };
 </script>
 

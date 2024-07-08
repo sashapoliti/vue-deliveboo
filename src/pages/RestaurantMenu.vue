@@ -105,6 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .img-container {
   height: 560px !important;
   overflow: hidden;
