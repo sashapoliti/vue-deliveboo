@@ -9,7 +9,8 @@
           <div class="img-container me-2">
             <img :src="item.product.image
                 ? 'http://127.0.0.1:8000/storage/' + item.product.image
-                : this.store.api.defaultImg"    @error="setDefaultImage" :alt="item.product.name" />
+                : this.store.api.defaultImg
+              " @error="setDefaultImage" :alt="item.product.name" />
           </div>
           <div>
             <h3 class="text-center">

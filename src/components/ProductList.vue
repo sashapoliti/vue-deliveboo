@@ -1,4 +1,7 @@
 <template>
+    <div v-if="store.restaurantcart != store.data.restaurant.id && store.restaurantcart != '' "  class="alert alert-warning">
+        Puoi solo ordinare un ristorante alla volta
+    </div>
   <div class="row">
     <div
       class="col-12 col-md-6 col-lg-4 mb-4"
@@ -28,9 +31,8 @@
           </div>
           <div class="d-flex justify-content-center">
             <button
-              class="btn btn-danger red-button"
-              @click="store.functions.addToCart(product)"
-            >
+              class="btn btn-danger red-button " :class="{ disabled: store.restaurantcart != store.data.restaurant.id && store.restaurantcart != '' }"
+              @click="store.functions.addToCart(product)" >
               Aggiungi al carrello
             </button>
           </div>

@@ -1,5 +1,4 @@
 <template>
-   
   <!-- Jumbotron -->
   <div id="jumbotron">
     <div v-if="store.data.emptyCart" class="alert alert-warning">
@@ -57,10 +56,7 @@
 
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
-              <img
-                src="/images/instructions/scooter.png"
-                alt="Immagine numero 1"
-              />
+              <img src="/images/instructions/scooter.png" alt="Immagine numero 1" />
             </div>
             <div class="text">
               <h3>Consegna veloce e affidabile</h3>
@@ -75,10 +71,7 @@
 
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
-              <img
-                src="/images/instructions/food.png"
-                alt="Immagine numero 1"
-              />
+              <img src="/images/instructions/food.png" alt="Immagine numero 1" />
             </div>
             <div class="text">
               <h3>Gusta ogni boccone</h3>
@@ -96,8 +89,6 @@
   <section id="restaurants-list" class="container">
     <RestaurantsFilter />
   </section>
-
-  
 </template>
 
 <script>
@@ -155,14 +146,14 @@ export default {
     },
   },
   beforeRouteEnter(to, from, next) {
-    next(vm => {
+    next((vm) => {
       if (vm.store.data.emptyCart) {
         setTimeout(() => {
-          vm.store.data.emptyCart= '';
+          vm.store.data.emptyCart = "";
         }, 5000);
       }
     });
-  }
+  },
 };
 </script>
 
@@ -176,6 +167,7 @@ export default {
   height: 100%;
   background-image: url("/images/jumbotron/foods.png");
 }
+
 #jumbotron {
   position: relative;
   z-index: 5;
@@ -193,17 +185,20 @@ export default {
     padding-top: 8%;
     margin-left: 4%;
     color: $secondary-color;
+
     h1 {
       font-size: 7rem;
       font-weight: 800;
       line-height: 0.9;
       margin-left: -1px;
     }
+
     p {
       padding: 20px 0;
       font-size: 1rem;
       font-weight: 500;
     }
+
     button {
       font-family: $title-font;
       font-weight: 500;
@@ -225,31 +220,37 @@ export default {
         1.5px 1.5px 2.5px 1.5px rgba(0, 0, 0, 0.5);
     }
   }
+
   .slide-enter-active,
   .slide-leave-active {
     transition: 0.5s;
   }
+
   .slide-enter,
   .slide-leave-to {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   .city {
     position: absolute;
     z-index: 9;
     width: 500px;
     bottom: calc(50% - 80px);
     right: 15%;
+
     img {
       width: 100%;
     }
   }
+
   .rider {
     position: absolute;
     z-index: 10;
     width: 500px;
     bottom: calc(50% - 230px);
     right: 5%;
+
     img {
       width: 100%;
     }
@@ -263,44 +264,54 @@ export default {
   background-position: bottom;
   background-repeat: no-repeat;
   padding-bottom: 100px;
+
   .left {
     width: 55%;
+
     img {
       width: 100%;
     }
   }
+
   .right {
     width: 45%;
     padding: 0 30px;
     color: $tertiary-color;
+
     h2 {
       font-size: 3rem;
       font-weight: 800;
       line-height: 1.07;
       margin-bottom: 10px;
     }
+
     .image {
       width: 100px;
       aspect-ratio: 1 / 1;
       background-color: $primary-color;
       border-radius: 50px;
+
       img {
         width: 100%;
       }
     }
+
     .text {
       width: calc(100% - 80px);
       margin-left: 20px;
+
       h3 {
         font-size: 1.5rem;
         font-weight: 600;
         margin: 0;
       }
+
       p {
         margin: 0;
         width: 80%;
       }
     }
+
     .pois::before {
       content: ".....";
       font-family: "Font Awesome 5 Free";

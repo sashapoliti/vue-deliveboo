@@ -15,8 +15,13 @@ export const store = reactive({
         emptyCart: ''
     },
     cart: [],
+    restaurantcart:'',
     functions:{
         addToCart(product) {
+            if(store.restaurantcart == ''){
+               store.restaurantcart = store.data.restaurant.id;
+               console.log(store.restaurantcart);
+            }
             const cartItem = store.cart.find(item => item.product.id === product.id);
             if (cartItem) {
               cartItem.quantity += product.quantity;
@@ -29,6 +34,10 @@ export const store = reactive({
             const index = store.cart.findIndex(item => item.product.id === product.id);
             if (index !== -1) {
               store.cart.splice(index, 1);
+            }
+            if(store.cart.length == 0){
+              store.restaurantcart = ``;
+              console.log(store.restaurantcart);
             }
             this.saveCart();
           },
@@ -47,6 +56,10 @@ export const store = reactive({
               cartItem.quantity = quantity;
             } else if (cartItem && quantity <= 0) {
               store.functions.removeFromCart(product);
+            }
+            if(store.cart.length == 0){
+              store.restaurantcart = ``;
+              console.log(store.restaurantcart);
             }
             store.functions.saveCart();
           }
