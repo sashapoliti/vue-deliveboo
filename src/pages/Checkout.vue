@@ -11,29 +11,47 @@
           <div class="row">
             <div class="col-6">
               <label for="name">Nome <strong class="text-danger">*</strong></label>
-              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3" placeholder="Nome">
+              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3"
+                placeholder="Nome">
               <span v-if="errors.name" class="text-danger">{{ errors.name }}</span>
             </div>
             <div class="col-6">
               <label for="surname">Cognome <strong class="text-danger">*</strong></label>
-              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50" class="form-control my-3" placeholder="Cognome">
+              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50" class="form-control my-3"
+                placeholder="Cognome">
               <span v-if="errors.surname" class="text-danger">{{ errors.surname }}</span>
             </div>
           </div>
           <label for="email">Email <strong class="text-danger">*</strong></label>
-          <input type="email" id="email" ref="email" v-model="email" maxlength="50" class="form-control my-3" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Email">
+          <input type="email" id="email" ref="email" v-model="email" maxlength="50" class="form-control my-3" required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Email">
           <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
+          <div class="row">
+            <div class="col-6">
+              <label for="phone">Cellulare <strong class="text-danger">*</strong></label>
+              <input type="text" id="phone" ref="phone" maxlength="10" minlength="10" v-model="phone"
+                class="form-control my-3" placeholder="Cellulare">
+              <span v-if="errors.phone" class="text-danger">{{ errors.phone }}</span>
+            </div>
+            <div class="col-6">
+              <label for="address">Indirizzo <strong class="text-danger">*</strong></label>
+              <input type="text" id="address" ref="address" v-model="address" maxlength="50" class="form-control my-3"
+                placeholder="Indirizzo">
+              <span v-if="errors.address" class="text-danger">{{ errors.address }}</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <h2>Il tuo ordine è quasi pronto</h2>
       <p class="mx-1">Qui i dettagli del tuo ordine:</p>
       <div class="product-container">
-        <ShoppingCart :cart="store.cart" @add-to-cart="addToCart" @remove-from-cart="removeFromCart" />
+        <ShoppingCart :cart="store.cart" />
       </div>
       <h2 class="mt-5">Pagamento</h2>
       <p class="mx-1">Scegli il tuo metodo di pagamento:</p>
-      <PaymentComponent ref="paymentComponent" :name="name" :surname="surname" :email="email" @submit-payment="submitPayment" />
+      <PaymentComponent ref="paymentComponent" :name="name" :surname="surname" :email="email" :phone="phone"
+        :address="address" @submit-payment="submitPayment" />
     </div>
   </div>
 </template>
@@ -51,11 +69,13 @@ export default {
       name: '',
       surname: '',
       email: '',
+      phone: '',
+      address: '',
       errors: {}
     };
   },
   created() {
-    this.loadCart();
+    store.functions.loadCart();
   },
   computed: {
     totalPrice() {
@@ -63,66 +83,56 @@ export default {
     }
   },
   methods: {
-    addToCart(product) {
-      const cartItem = this.store.cart.find(item => item.product.id === product.id);
-      if (cartItem) {
-        cartItem.quantity += product.quantity;
-      } else {
-        this.store.cart.push({ product: { ...product }, quantity: product.quantity });
-      }
-      this.saveCart();
-    },
-    removeFromCart(product) {
-      const index = this.store.cart.findIndex(item => item.product.id === product.id);
-      if (index !== -1) {
-        this.store.cart.splice(index, 1);
-      }
-      this.saveCart();
-    },
-    saveCart() {
-      localStorage.setItem('cart', JSON.stringify(this.store.cart));
-    },
-    loadCart() {
-      const cart = localStorage.getItem('cart');
-      if (cart) {
-        this.store.cart = JSON.parse(cart);
-      }
-    },
     validateForm() {
       this.errors = {};
+
       if (!this.name) {
-        this.errors.name = 'Name is required.';
+        this.errors.name = 'Il nome è obbligatorio.';
       } else if (this.name.length < 3) {
-        this.errors.name = 'Name must be at least 3 characters.';
+        this.errors.name = 'Il nome deve avere almeno 3 caratteri.';
       } else if (this.name.length > 50) {
-        this.errors.name = 'Name must be at most 50 characters.';
+        this.errors.name = 'Il nome deve avere al massimo 50 caratteri.';
       } else if (!/^[a-zA-Z-']+$/.test(this.name)) {
-        this.errors.name = 'Name must only contain letters.';
+        this.errors.name = 'Il nome deve contenere solo lettere.';
       }
 
       if (!this.surname) {
-        this.errors.surname = 'Surname is required.';
+        this.errors.surname = 'Il cognome è obbligatorio.';
       } else if (this.surname.length < 3) {
-        this.errors.surname = 'Surname must be at least 3 characters.';
-      }else if (this.surname.length > 50) {
-        this.errors.surname = 'Surname must be at most 50 characters.';
+        this.errors.surname = 'Il cognome deve avere almeno 3 caratteri.';
+      } else if (this.surname.length > 50) {
+        this.errors.surname = 'Il cognome deve avere al massimo 50 caratteri.';
       } else if (!/^[a-zA-Z-']+$/.test(this.surname)) {
-        this.errors.surname = 'Surname must only contain letters.';
+        this.errors.surname = 'Il cognome deve contenere solo lettere.';
       }
 
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!this.email) {
-        this.errors.email = 'Email is required.';
+        this.errors.email = 'L\'email è obbligatoria.';
       } else if (!emailPattern.test(this.email)) {
-        this.errors.email = 'Email is not valid.';
+        this.errors.email = 'L\'email non è valida.';
       } else if (this.email.length > 50) {
-        this.errors.email = 'Email must be at most 50 characters.';
-      } 
+        this.errors.email = 'L\'email deve avere al massimo 50 caratteri.';
+      }
+
+      if (!this.phone) {
+        this.errors.phone = 'Il numero di telefono è obbligatorio.';
+      } else if (!/^\d{10,15}$/.test(this.phone)) {
+        this.errors.phone = 'Il numero di telefono deve essere tra 10 e 15 cifre.';
+      }
+
+      if (!this.address) {
+        this.errors.address = 'L\'indirizzo è obbligatorio.';
+      } else if (this.address.length < 5) {
+        this.errors.address = 'L\'indirizzo deve avere almeno 5 caratteri.';
+      } else if (this.address.length > 50) {
+        this.errors.address = 'L\'indirizzo deve avere al massimo 50 caratteri.';
+      }
 
       return Object.keys(this.errors).length === 0;
     },
     scrollToFirstError() {
-      const errorFields = ['name', 'surname', 'email'];
+      const errorFields = ['name', 'surname', 'email', 'phone', 'address'];
       for (let field of errorFields) {
         if (this.errors[field]) {
           this.$nextTick(() => {
@@ -178,6 +188,3 @@ export default {
   }
 }
 </style>
-
-
-  

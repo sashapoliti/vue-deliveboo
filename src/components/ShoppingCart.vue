@@ -21,9 +21,7 @@
               <button class="changeMinus" @click="
                 store.functions.updateQuantity(
                   item.product,
-                  item.quantity - 1
-                )
-                ">
+                  item.quantity - 1)">
                 -
               </button>
               <span class="mx-2">{{ item.quantity }}</span>

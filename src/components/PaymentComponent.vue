@@ -16,7 +16,7 @@ import axios from 'axios';
 import { store } from "../store";
 
 export default {
-  props: ['name', 'surname', 'email'],
+  props: ['name', 'surname', 'email', 'phone', 'address'],
   data() {
     return {
       store,
@@ -51,7 +51,6 @@ export default {
       });
     },
     async submitPayment() {
-      this.dbOrder();
       this.disabled = true;
       this.instance.requestPaymentMethod(async (err, payload) => {
         if (err) {
@@ -82,6 +81,7 @@ export default {
           this.$router.push({ name: 'home' });
           this.instance.clearSelectedPaymentMethod();
           this.disabled = false;
+          this.dbOrder();
           /* this.dbOrder(); */
         }
       });
@@ -92,8 +92,8 @@ export default {
         customer_name: this.name,
         customer_surname: this.surname,
         customer_email: this.email,
-        customer_phone: '12345',
-        customer_address: 'Via Pizza 1',
+        customer_phone: this.phone,
+        customer_address: this.address,
         total_price: this.store.data.totalPrice,
         cart: this.store.cart
       };
