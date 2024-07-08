@@ -41,7 +41,7 @@
       >
         Ristoranti trovati ({{ restaurants.length }})
       </span>
-      <div class="row pt-2">
+      <div class="row main-row pt-2">
         <!-- loader -->
         <div
           class="loader col-12 h-100 d-flex justify-content-center align-items-center"
@@ -78,7 +78,11 @@
         >
           <div class="text-center">
             <div>
-              <img class="w-75" src="/images/filter_component/no_filter.png" alt="Nessun filtro selezionato" />
+              <img
+                class="w-75"
+                src="/images/filter_component/no_filter.png"
+                alt="Nessun filtro selezionato"
+              />
             </div>
           </div>
         </div>
@@ -103,17 +107,23 @@
 
         <!-- restaurants -->
         <div
+          class="col-12"
           v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
-          v-for="restaurant in restaurants"
-          :key="restaurant.id"
-          class="col-12 col-md-6 col-lg-4 mb-3"
         >
-          <RouterLink
-            :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-            @click="propRestaurant(restaurant)"
-          >
-            <CardComponent :restaurant="restaurant" />
-          </RouterLink>
+          <div class="row">
+            <div
+              v-for="restaurant in restaurants"
+              :key="restaurant.id"
+              class="col-12 col-md-6 col-lg-4 mb-3"
+            >
+              <RouterLink
+                :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
+                @click="propRestaurant(restaurant)"
+              >
+                <CardComponent :restaurant="restaurant" />
+              </RouterLink>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -229,7 +239,7 @@ export default {
 .restaurants {
   width: 80%;
   padding-left: 40px;
-  .row {
+  .row.main-row {
     height: calc(100% - 25px);
     .no-results {
       img {
