@@ -21,7 +21,7 @@
             </div>
           </div>
           <label for="email">Email <strong class="text-danger">*</strong></label>
-          <input type="email" id="email" ref="email" v-model="email" maxlength="50" class="form-control my-3" placeholder="Email">
+          <input type="email" id="email" ref="email" v-model="email" maxlength="50" class="form-control my-3" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Email">
           <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
         </div>
       </div>
