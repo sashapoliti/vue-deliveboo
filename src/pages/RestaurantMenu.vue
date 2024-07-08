@@ -136,7 +136,7 @@ export default {
 
     small {
       font-weight: 400;
-      text-shadow: 0 0 10px black;
+      text-shadow: 0 0 20px black;
     }
   }
 
