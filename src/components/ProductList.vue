@@ -2,7 +2,7 @@
   <div class="row">
     <div
       class="col-12 col-md-6 col-lg-4 mb-4"
-      v-for="product in store.data.restaurant.plates"
+      v-for="product in sortedPlates"
       :key="product.id"
     >
       <div class="card">
@@ -70,6 +70,9 @@ export default {
         ? `${store.api.imgBasePath}${store.data.restaurant.image}`
         : store.api.defaultImg;
     },
+    sortedPlates() {
+      return this.store.data.restaurant.plates.slice().sort((a, b) => a.name.localeCompare(b.name));
+    }
   },
 };
 </script>
