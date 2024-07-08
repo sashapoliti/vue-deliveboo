@@ -17,12 +17,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Ops..!</h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
         </div>
         <div class="modal-body">
           Sembra tu abbia nel tuo carrello dei piatti di
@@ -41,7 +35,7 @@
             class="btn btn-danger"
             @click="store.functions.clearCart()"
           >
-            Svuota cestino
+            Svuota carrello
           </button>
         </div>
       </div>
