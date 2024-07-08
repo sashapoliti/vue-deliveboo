@@ -4,7 +4,8 @@
       <img :src="getImage" @error="setDefaultImage" :alt="store.data.restaurant.name" />
       <div id="title">
         <h1>{{ store.data.restaurant.name }}</h1>
-        <h5>Start your order and enjoy</h5>
+        <h5>{{ store.data.restaurant.description }}</h5>
+        <small>{{ store.data.restaurant.address }}</small>
       </div>
     </div>
     <div class="wave">
@@ -22,14 +23,13 @@
         </div>
 
         <div class="cart-container">
-          <h2>Cart</h2>
-          <p>Contenuto</p>
+          <h2>Carrello</h2>
           <div class="linea"></div>
-          <ShoppingCart :cart="store.cart"   />
+          <ShoppingCart :cart="store.cart" />
           <div class="text-center">
       <button class="btn btn-danger red-button" @click="$router.push({ name: 'checkout' })"
         :disabled="store.cart.length === 0">
-        Checkout
+        Vai all'ordine
       </button>
     </div>
         </div>
@@ -131,6 +131,11 @@ export default {
       margin-top: 20px;
       text-shadow: 0 0 10px black;
       font-weight: 400;
+    }
+
+    small {
+      font-weight: 400;
+      text-shadow: 0 0 10px black;
     }
   }
 

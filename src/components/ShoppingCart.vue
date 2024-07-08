@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="store.cart.length === 0" class="text-center my-3">Your cart is empty</div>
+    <div v-if="store.cart.length === 0" class="text-center my-3">Il carrello è vuoto</div>
     <div v-else>
       <div v-for="item in store.cart" :key="item.product.id" class="mt-3">
         <h3>{{ item.product.name }} x {{ item.quantity }}</h3>
