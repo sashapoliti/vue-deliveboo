@@ -10,7 +10,7 @@
         ref="restaurantImage"
       />
       <div class="badges">
-        <span class="badge rounded-pill" v-for="typeEl in restaurant.types">{{ typeEl.name }}</span>
+        <span class="badge rounded-pill" v-for="typeEl in sortedTypes">{{ typeEl.name }}</span>
       </div>
     </div>
     <div class="card-body">
@@ -36,6 +36,9 @@ export default {
         ? `${this.store.api.imgBasePath}${this.restaurant.image}`
         : this.store.api.defaultImg;
     },
+    sortedTypes() {
+      return this.restaurant.types.slice().sort((a, b) => a.name.localeCompare(b.name));
+    }
   },
   methods: {
     setDefaultImage(event) {
