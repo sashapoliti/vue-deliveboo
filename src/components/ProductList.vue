@@ -5,7 +5,7 @@
       v-for="product in sortedPlates"
       :key="product.id"
     >
-      <div class="card">
+      <div class="card h-100">
         <img
           :src="product.image ? 'http://127.0.0.1:8000/storage/' + product.image : this.store.api.defaultImg"
           @error="setDefaultImage"
