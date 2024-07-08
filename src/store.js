@@ -14,4 +14,31 @@ export const store = reactive({
         totalPrice: 0,
     },
     cart: [],
+    functions:{
+        addToCart(product) {
+            const cartItem = store.cart.find(item => item.product.id === product.id);
+            if (cartItem) {
+              cartItem.quantity += product.quantity;
+            } else {
+              store.cart.push({ product: { ...product }, quantity: product.quantity });
+            }
+            this.saveCart();
+          },
+          removeFromCart(product) {
+            const index = store.cart.findIndex(item => item.product.id === product.id);
+            if (index !== -1) {
+              store.cart.splice(index, 1);
+            }
+            this.saveCart();
+          },
+          saveCart() {
+            localStorage.setItem('cart', JSON.stringify(store.cart));
+          },
+          loadCart() {
+            const cart = localStorage.getItem('cart');
+            if (cart) {
+              store.cart = JSON.parse(cart);
+            }
+          },
+    }
 });

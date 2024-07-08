@@ -14,7 +14,7 @@
                             <button @click="updateQuantity(product, product.quantity + 1)">+</button>
                         </div>
                     </div>
-                    <button class="btn btn-danger red-button" @click="addToCart(product)">
+                    <button class="btn btn-danger red-button" @click="store.functions.addToCart(product)">
                         Aggiungi al carrello
                     </button>
                 </div>
@@ -43,9 +43,9 @@ export default {
             }
             product.quantity = quantity;
         },
-        addToCart(product) {
-            this.$emit('add-to-cart', product);
-        },
+        // addToCart(product) {
+        //     this.$emit('add-to-cart', product);
+        // },
     },
     computed: {
         getImage() {

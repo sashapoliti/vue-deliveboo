@@ -18,14 +18,20 @@
 
       <div class="container d-flex">
         <div class="cards-container">
-          <ProductList :products="products" @add-to-cart="addToCart" />
+          <ProductList :products="products" />
         </div>
 
         <div class="cart-container">
           <h2>Cart</h2>
           <p>Contenuto</p>
           <div class="linea"></div>
-          <ShoppingCart :cart="store.cart" @remove-from-cart="removeFromCart"  />
+          <ShoppingCart :cart="store.cart"   />
+          <div class="text-center">
+      <button class="btn btn-danger red-button" @click="$router.push({ name: 'checkout' })"
+        :disabled="store.cart.length === 0">
+        Checkout
+      </button>
+    </div>
         </div>
       </div>
     </div>
@@ -51,7 +57,7 @@ export default {
     };
   },
   created() {
-    this.loadCart();
+    store.functions.loadCart();
   },
   computed: {
     getImage() {
@@ -59,31 +65,6 @@ export default {
     }
   },
   methods: {
-    addToCart(product) {
-      const cartItem = store.cart.find(item => item.product.id === product.id);
-      if (cartItem) {
-        cartItem.quantity += product.quantity;
-      } else {
-        store.cart.push({ product: { ...product }, quantity: product.quantity });
-      }
-      this.saveCart();
-    },
-    removeFromCart(product) {
-      const index = store.cart.findIndex(item => item.product.id === product.id);
-      if (index !== -1) {
-        store.cart.splice(index, 1);
-      }
-      this.saveCart();
-    },
-    saveCart() {
-      localStorage.setItem('cart', JSON.stringify(store.cart));
-    },
-    loadCart() {
-      const cart = localStorage.getItem('cart');
-      if (cart) {
-        store.cart = JSON.parse(cart);
-      }
-    },
     setDefaultImage(event) {
       event.target.src = store.api.defaultImg;
     },
