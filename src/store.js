@@ -80,5 +80,10 @@ export const store = reactive({
     }
       store.functions.saveCart();
     },
+    clearCart() {
+      store.cart = [];
+      store.restaurantcart = null;
+      store.functions.saveCart();
+    },
   },
 });

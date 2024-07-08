@@ -1,6 +1,6 @@
 <template>
   <!-- Modal -->
-  <!-- <div
+  <div
     v-if="
       store.restaurantcart &&
       store.restaurantcart.id !== store.data.restaurant.id &&
@@ -25,31 +25,35 @@
           ></button>
         </div>
         <div class="modal-body">
-          Sembra tu abbia nel tuo carrello dei piatti del ristorante
-          {{ store.restaurantcart.name }}. <br />
+          Sembra tu abbia nel tuo carrello dei piatti di
+          "{{ store.restaurantcart.name }}". <br />
           Torna indietro oppure svuota il carrello e continua su
-          {{ store.data.restaurant.name }}!
+          "{{ store.data.restaurant.name }}"!
         </div>
         <div class="modal-footer">
+          <a :href="`http://localhost:5174/restaurants/${store.restaurantcart.slug}`">
+            <button type="button" class="btn btn-secondary">
+              Torna indietro
+            </button>
+          </a>
           <button
             type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
+            class="btn btn-danger"
+            @click="store.functions.clearCart()"
           >
-            Close
+            Svuota cestino
           </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
-  </div> -->
-  <div v-if="
+  </div>
+  <!-- <div v-if="
       store.restaurantcart &&
       store.restaurantcart.id !== store.data.restaurant.id &&
       store.restaurantcart.id !== ''
     " class="alert alert-warning">
       Non puoi ordinare da piu di un ristorante
-    </div>
+    </div> -->
 
   <div class="row">
     <div
@@ -147,6 +151,12 @@ export default {
     },
     setDefaultImage(event) {
       event.target.src = store.api.defaultImg;
+    },
+    redirectToRestaurant() {
+      this.$router.push({
+        name: "restaurant",
+        params: { slug: store.data.restaurantcart.slug },
+      });
     },
   },
   computed: {
