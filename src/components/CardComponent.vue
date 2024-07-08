@@ -7,6 +7,9 @@
         class="card-img-top"
         :alt="restaurant.name"
       />
+      <div class="badges">
+          <span class="badge rounded-pill" v-for="$type in restaurant.types">{{ $type.name }}</span>
+      </div>
     </div>
     <div class="card-body">
       <p class="card-title fw-bold">{{ restaurant.name }}</p>
@@ -41,6 +44,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/partials/_variables.scss";
+
 .card {
   border: 0;
   border-radius: 0;
@@ -50,6 +55,18 @@ export default {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
+    .badges {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      z-index: 1;
+      .badge {
+        background-color: $tertiary-color;
+        color: $primary-color;
+        font-size: 0.7rem;
+        margin: 0 2px;
+      }
+    }
   }
 
   .card-img-top {
