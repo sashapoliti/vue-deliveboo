@@ -21,7 +21,7 @@
               <button class="changeMinus" @click="
                 store.functions.updateQuantity(
                   item.product,
-                  item.quantity - 1)">
+                  item.quantity - 1)"  :class="{ none: store.flag === true}">
                 -
               </button>
               <span class="mx-2">{{ item.quantity }}</span>
@@ -30,15 +30,15 @@
                   item.product,
                   item.quantity + 1
                 )
-                ">
+                "  :class="{ none: store.flag === true}">
                 +
               </button>
             </div>
           </div>
         </div>
 
-        <button class="remove-button " @click="store.functions.removeFromCart(item.product) ">
-          <i class="fa-solid fa-xmark "></i>
+        <button class="remove-button " @click="store.functions.removeFromCart(item.product)" :class="{ none: store.flag === true}">
+          <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
@@ -79,6 +79,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.none {
+  display: none;
+}
 .cart-container {
   .cart-item {
     .img-container {

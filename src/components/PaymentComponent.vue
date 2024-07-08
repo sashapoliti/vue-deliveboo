@@ -51,11 +51,13 @@ export default {
       });
     },
     async submitPayment() {
+      store.flag = true;
       this.disabled = true;
       this.instance.requestPaymentMethod(async (err, payload) => {
         if (err) {
           console.error(err);
           this.disabled = false;
+          store.flag = false;
           return;
         }
 
@@ -85,6 +87,7 @@ export default {
           store.data.totalPrice = 0;  
           store.restaurantcart = '';
           this.disabled = false;
+          store.flag = false;
           this.$router.push({ name: 'home' });
           store.functions.saveCart();
         }

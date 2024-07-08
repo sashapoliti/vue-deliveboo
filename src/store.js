@@ -16,6 +16,7 @@ export const store = reactive({
     },
     cart: [],
     restaurantcart:'',
+    flag: false,
     functions:{
         addToCart(product) {
             if(store.restaurantcart == ''){
