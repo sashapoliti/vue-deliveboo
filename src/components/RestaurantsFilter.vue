@@ -39,7 +39,7 @@
         class="fw-bold ms-1"
         v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
       >
-        Tutti i ristoranti
+        Ristoranti trovati ({{ restaurants.length }})
       </span>
       <div class="row pt-2">
         <!-- loader -->
