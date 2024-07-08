@@ -6,9 +6,11 @@
         @error="setDefaultImage"
         class="card-img-top"
         :alt="restaurant.name"
+        loading="lazy"
+        ref="restaurantImage"
       />
       <div class="badges">
-          <span class="badge rounded-pill" v-for="$type in restaurant.types">{{ $type.name }}</span>
+        <span class="badge rounded-pill" v-for="typeEl in restaurant.types">{{ typeEl.name }}</span>
       </div>
     </div>
     <div class="card-body">
@@ -39,6 +41,16 @@ export default {
     setDefaultImage(event) {
       event.target.src = this.store.api.defaultImg;
     },
+  },
+  mounted() {
+    const img = new Image();
+    img.src = this.getImage;
+    img.onload = () => {
+      this.$refs.restaurantImage.src = img.src;
+    };
+    img.onerror = () => {
+      this.setDefaultImage({ target: this.$refs.restaurantImage });
+    };
   },
 };
 </script>
