@@ -160,11 +160,11 @@ export default {
   margin-top: -60px;
 
   .cards-container {
-    width: 80%;
+    width: 75%;
   }
 
   .cart-container {
-    width: 20%;
+    width: 25%;
     margin-left: 30px;
 
     .linea {
