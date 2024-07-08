@@ -117,10 +117,10 @@ export default {
 
       if (!this.phone) {
         this.errors.phone = 'Il numero di telefono è obbligatorio.';
-      } else if (!/^\d{10,15}$/.test(this.phone)) {
-        this.errors.phone = 'Il numero di telefono deve essere tra 10 e 15 cifre.';
+      } else if (!/^\d{10}$/.test(this.phone)) {
+        this.errors.phone = 'Il numero di telefono deve avere almeno 10 numeri.';
       }
-
+      
       if (!this.address) {
         this.errors.address = 'L\'indirizzo è obbligatorio.';
       } else if (this.address.length < 5) {
