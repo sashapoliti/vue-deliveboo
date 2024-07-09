@@ -48,7 +48,7 @@ export default {
         customer_address: this.address,
         total_price: this.store.data.totalPrice,
         cart: this.store.cart,
-        name: this.store.restaurantcart.name
+        restaurant_name: this.store.data.restaurant.name
       };      
       this.store.data.order = data;
       console.log(this.store.data.order);
@@ -103,7 +103,7 @@ export default {
               phone: this.phone,
               address: this.address,
               cart: this.store.cart,
-              restaurant_name: this.store.restaurantcart.name
+              restaurant_name: this.store.data.restaurant.name
             }
           );
           if (response.data.success) {
@@ -138,6 +138,7 @@ export default {
         customer_address: this.address,
         total_price: this.store.data.totalPrice,
         cart: this.store.cart,
+        restaurant_name: this.store.restaurantcart.name
       };
 
       axios
