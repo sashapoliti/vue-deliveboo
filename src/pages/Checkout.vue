@@ -161,7 +161,7 @@
         >":
       </p>
       <div class="product-container">
-        <div class="cart-container">
+        <div class="cart-container w-100">
           <div
             v-for="item in store.data.order.cart"
             :key="item.product.id"
@@ -179,21 +179,19 @@
                   :alt="item.product.name"
                 />
               </div>
-              <div>
-                <h3 class="text-center">
+                <h3 class="text-center m-0">
                   {{ item.product.name }}
                 </h3>
-                <div
-                  class="changeQuantity d-flex align-items-center justify-content-center"
-                >
-                  <span class="me-2">{{ item.product.price }}€ </span>
-                  <span class="mx-2"> x {{ item.quantity }}</span>
+                <div class="flex-grow-1 text-end">
+                  <span>{{ item.product.price }}€ </span>
+                  <span> x {{ item.quantity }}</span>
                 </div>
-              </div>
             </div>
           </div>
 
-          <h5 class="my-3">Totale: {{ store.data.order.total_price }} €</h5>
+          <h5 class="my-3 text-end">
+            Totale: {{ store.data.order.total_price }} €
+          </h5>
         </div>
       </div>
       <div class="my-3 d-flex justify-content-center">
