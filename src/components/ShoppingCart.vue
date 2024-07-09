@@ -14,10 +14,10 @@
           </div>
           <div>
             <h3 class="text-center">
-              {{ item.product.name }} x {{ item.quantity }}
+              {{ item.product.name }}
             </h3>
             <div class="changeQuantity d-flex align-items-center justify-content-center">
-              <span class="me-2">{{ item.product.price * item.quantity }} €</span>
+              <span class="me-2">{{ item.product.price}} €</span>
               <button class="changeMinus" @click="
                 store.functions.updateQuantity(
                   item.product,

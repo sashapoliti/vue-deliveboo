@@ -11,32 +11,29 @@
           <div class="row">
             <div class="col-6">
               <label for="name">Nome <strong class="text-danger">*</strong></label>
-              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3"
-                placeholder="Nome">
+              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3">
               <span v-if="errors.name" class="text-danger">{{ errors.name }}</span>
             </div>
             <div class="col-6">
               <label for="surname">Cognome <strong class="text-danger">*</strong></label>
-              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50" class="form-control my-3"
-                placeholder="Cognome">
+              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50" class="form-control my-3">
               <span v-if="errors.surname" class="text-danger">{{ errors.surname }}</span>
             </div>
           </div>
           <label for="email">Email <strong class="text-danger">*</strong></label>
           <input type="email" id="email" ref="email" v-model="email" maxlength="50" class="form-control my-3" required
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="Email">
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
           <span v-if="errors.email" class="text-danger">{{ errors.email }}</span>
           <div class="row">
             <div class="col-6">
               <label for="phone">Cellulare <strong class="text-danger">*</strong></label>
               <input type="text" id="phone" ref="phone" maxlength="10" minlength="10" v-model="phone"
-                class="form-control my-3" placeholder="Cellulare">
+                class="form-control my-3">
               <span v-if="errors.phone" class="text-danger">{{ errors.phone }}</span>
             </div>
             <div class="col-6">
               <label for="address">Indirizzo <strong class="text-danger">*</strong></label>
-              <input type="text" id="address" ref="address" v-model="address" maxlength="50" class="form-control my-3"
-                placeholder="Indirizzo">
+              <input type="text" id="address" ref="address" v-model="address" maxlength="50" class="form-control my-3">
               <span v-if="errors.address" class="text-danger">{{ errors.address }}</span>
             </div>
           </div>

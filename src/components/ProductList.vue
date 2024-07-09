@@ -17,18 +17,28 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Ops..!</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            @click="showModal = false"
+          ></button>
         </div>
         <div class="modal-body">
-          Sembra tu abbia nel tuo carrello dei piatti di
-          "<strong>{{ store.restaurantcart.name }}</strong>". <br />
-          Torna indietro oppure svuota il carrello e continua su
-          "<strong>{{ store.data.restaurant.name }}</strong>"!
+          Sembra tu abbia nel tuo carrello dei piatti di "<strong>{{
+            store.restaurantcart.name
+          }}</strong
+          >". <br />
+          Torna al precedente ristorante oppure svuota il carrello e continua su
+          "<strong>{{ store.data.restaurant.name }}</strong
+          >"!
         </div>
         <div class="modal-footer">
-          <a :href="`http://localhost:5174/restaurants/${store.restaurantcart.slug}`">
-            <button type="button" class="btn btn-secondary">
-              Torna indietro
-            </button>
+          <a
+            :href="`http://localhost:5174/restaurants/${store.restaurantcart.slug}`"
+          >
+            <button type="button" class="btn return">Torna indietro</button>
           </a>
           <button
             type="button"
@@ -90,14 +100,8 @@
           </div>
           <div class="d-flex justify-content-center">
             <button
-              class="btn btn-danger red-button"
-              :class="{
-                disabled:
-                  store.restaurantcart &&
-                  store.restaurantcart.id !== store.data.restaurant.id &&
-                  store.restaurantcart.id !== '',
-              }"
-              @click="store.functions.addToCart(product)"
+              class="btn red-button"
+              @click="checkRestaurantCart(product)"
             >
               Aggiungi al carrello
             </button>
@@ -122,11 +126,9 @@ export default {
       showModal: false,
     };
   },
-  mounted() {
-    this.checkRestaurantCart();
-  },
+  mounted() {},
   methods: {
-    checkRestaurantCart() {
+    checkRestaurantCart(product) {
       if (
         store.restaurantcart &&
         store.restaurantcart.id !== store.data.restaurant.id &&
@@ -135,6 +137,7 @@ export default {
         this.showModal = true;
       } else {
         this.showModal = false;
+        this.store.functions.addToCart(product);
       }
     },
     updateQuantity(product, quantity) {
@@ -169,8 +172,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/partials/_variables.scss";
+
 .modal {
   display: none;
+  .modal-content {
+    /* background-color: $primary-color; */
+    border: none;
+    .modal-header {
+      border-bottom: none;
+    }
+    .modal-footer {
+      border-top: none;
+      button.return {
+        color: white;
+        background-color: $secondary-color;
+        font-weight: 600;
+        transition: filter 0.3s ease-in-out;
+        &:hover {
+          filter: brightness(0.7);
+        }
+      }
+    }
+  }
 }
 .modal.show {
   display: block;
@@ -183,6 +207,12 @@ export default {
   font-weight: 600;
   padding: 15px 20px 15px 20px;
   border-radius: 50px;
+  background-color: $tertiary-color;
+  color: $primary-color;
+  transition: filter 0.3s ease-in-out;
+  &:hover {
+    filter: brightness(0.9);
+  }
 }
 
 .card {

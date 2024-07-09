@@ -2,7 +2,7 @@
   <div class="braintree-dropin-wrapper">
     <div id="dropin-container"></div>
     <div>
-      <button @click="$emit('submit-payment')" class="btn btn-danger pay-button" :disabled="disabled">
+      <button @click="$emit('submit-payment')" class="btn pay-button" :disabled="disabled">
         Procedi al pagamento
       </button>
     </div>
@@ -117,7 +117,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../assets/styles/partials/_variables.scss";
+
 .braintree-dropin-wrapper {
   max-width: 400px;
   margin: auto;
@@ -129,5 +131,13 @@ export default {
   font-weight: 600;
   padding: 15px 20px 15px 20px;
   border-radius: 50px;
+  background-color: $tertiary-color;
+  color: $primary-color;
+  transition: filter 0.3s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
 }
 </style>

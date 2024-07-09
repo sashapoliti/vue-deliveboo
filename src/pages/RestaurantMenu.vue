@@ -27,7 +27,7 @@
           <div class="linea"></div>
           <ShoppingCart :cart="store.cart" />
           <div class="text-center">
-      <button class="btn btn-danger red-button" @click="$router.push({ name: 'checkout' })"
+      <button class="btn red-button" @click="$router.push({ name: 'checkout' })"
         :disabled="store.cart.length === 0">
         Vai all'ordine
       </button>
@@ -105,6 +105,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/partials/_variables.scss";
 
 .img-container {
   height: 560px !important;
@@ -173,6 +174,20 @@ export default {
       height: 1px;
       background-color: #e6d4c3;
     }
+  }
+}
+
+.red-button {
+  text-transform: uppercase;
+  margin: 10px 0px 5px 0px;
+  font-weight: 600;
+  padding: 15px 20px 15px 20px;
+  border-radius: 50px;
+  background-color: $tertiary-color;
+  color: $primary-color;
+  transition: filter 0.3s ease-in-out;
+  &:hover {
+    filter: brightness(0.9);
   }
 }
 </style>
