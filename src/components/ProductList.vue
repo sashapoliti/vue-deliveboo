@@ -20,9 +20,9 @@
         </div>
         <div class="modal-body">
           Sembra tu abbia nel tuo carrello dei piatti di
-          "{{ store.restaurantcart.name }}". <br />
+          "<strong>{{ store.restaurantcart.name }}</strong>". <br />
           Torna indietro oppure svuota il carrello e continua su
-          "{{ store.data.restaurant.name }}"!
+          "<strong>{{ store.data.restaurant.name }}</strong>"!
         </div>
         <div class="modal-footer">
           <a :href="`http://localhost:5174/restaurants/${store.restaurantcart.slug}`">
