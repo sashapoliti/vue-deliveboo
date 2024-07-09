@@ -13,6 +13,8 @@ export const store = reactive({
     restaurant: {},
     totalPrice: 0,
     emptyCart: "",
+    order: {},
+    flagOrder: false
   },
   cart: [],
   restaurantcart: null,
