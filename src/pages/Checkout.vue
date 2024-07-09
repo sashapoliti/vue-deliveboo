@@ -41,7 +41,7 @@
       </div>
 
       <h2>Il tuo ordine è quasi pronto</h2>
-      <p class="mx-1">Qui i dettagli del tuo ordine:</p>
+      <p class="mx-1" v-if="store.restaurantcart">Qui i dettagli dei tuoi piatti da "<strong>{{ store.restaurantcart.name }}</strong>":</p>
       <div class="product-container">
         <ShoppingCart :cart="store.cart" />
       </div>
