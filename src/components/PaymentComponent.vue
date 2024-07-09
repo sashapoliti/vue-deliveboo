@@ -42,6 +42,7 @@ export default {
       dropin.create({
         authorization: this.clientToken,
         container: '#dropin-container',
+        locale: 'it',
       }, (createErr, instance) => {
         if (createErr) {
           console.error(createErr);
