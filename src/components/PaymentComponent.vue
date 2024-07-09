@@ -54,6 +54,7 @@ export default {
       console.log(this.store.data.order);
     },
     async getClientToken() {
+  
       try {
         const response = await axios.get(
           "http://localhost:8000/api/payment/token"
@@ -118,6 +119,7 @@ export default {
           // this.$router.push({ name: 'home' });
         } finally {
           this.dbOrder();
+          // console.log(store.cart);
           store.cart = [];
           store.data.totalPrice = 0;
           store.restaurantcart = null;
