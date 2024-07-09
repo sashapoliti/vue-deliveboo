@@ -102,6 +102,8 @@ export default {
               email: this.email,
               phone: this.phone,
               address: this.address,
+              cart: this.store.cart,
+              restaurant_name: this.store.restaurantcart.name
             }
           );
           if (response.data.success) {
