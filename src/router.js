@@ -37,13 +37,13 @@ const router = createRouter({
 });
 
 // Guard di navigazione globale
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresCart) && store.cart.length === 0) {
-    store.data.emptyCart = 'Il carrello è vuoto.'
-    next({ name: "home" });
-  } else {
-    next();
-  }
-});
+//router.beforeEach((to, from, next) => {
+//  if (to.matched.some(record => record.meta.requiresCart) && localStorage.getItem("cart") == null && store.cart.length == 0) {
+//    store.data.emptyCart = 'Il carrello è vuoto.';
+//    next({ name: "home" });
+//  } else {
+//    next();
+//  }
+//});
 
 export { router };
