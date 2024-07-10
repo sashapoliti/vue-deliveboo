@@ -159,7 +159,7 @@ export default {
 
 .container-bottom {
   margin-top: -60px;
-  width: 1200px;
+  width: 1600px;
 
   .cards-container {
     width: 75%;
