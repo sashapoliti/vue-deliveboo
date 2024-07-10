@@ -156,7 +156,7 @@
       <h2>Preparati a gustarli!</h2>
       <p class="mx-1">
         Qui i dettagli dei tuoi piatti da "<strong>{{
-          store.data.order.name
+          store.data.order.restaurant_name
         }}</strong
         >":
       </p>
