@@ -3,15 +3,15 @@
   <div id="jumbotron">
     <div v-if="store.data.emptyCart" class="alert alert-warning">
       {{ store.data.emptyCart }}
-    </div>
-    <transition name="slide" mode="out-in">
-      <div class="city" :key="currentCityIndex">
-        <img :src="currentCityImage" alt="Immagine della città" />
+    </div>     
+      <transition name="slide" mode="out-in">
+        <div class="city" @click="goToRestaurants" :key="currentCityIndex">
+          <img :src="currentCityImage" alt="Immagine della città" />
+        </div>
+      </transition>
+      <div class="rider">
+        <img src="/images/jumbotron/rider.png" alt="Immagine del rider" />
       </div>
-    </transition>
-    <div class="rider">
-      <img src="/images/jumbotron/rider.png" alt="Immagine del rider" />
-    </div>
     <div class="text">
       <h1 class="text-uppercase">
         Il tuo <br />
@@ -238,6 +238,7 @@ export default {
     width: 500px;
     bottom: calc(50% - 80px);
     right: 15%;
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -333,5 +334,102 @@ export default {
   margin: 70px auto;
   margin-bottom: 0;
   border-radius: 50px;
+}
+
+@media screen and (max-width: 1500px) {
+  #jumbotron {
+    padding: 80px 20px;
+    .city {
+      right: 5%;
+    }
+
+    .rider {
+        right: 0%;
+    }
+
+    .text {
+      margin-left: 1%;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  #jumbotron {
+    .text {
+      width: 400px;
+      h1 {
+        font-size: 6.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #jumbotron {
+    .rider {
+      top: 50%;
+    }
+
+    .city {
+      right: 12%;
+      top: 35%;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #instructions {
+    .left {
+      display: none;
+    }
+
+    .right {
+      margin: 0 auto;
+      width: 85%;
+      h2 {
+        text-align: center;
+      }
+    }
+  }
+
+  #jumbtron {
+    .city {
+      height: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 925px) {
+  #jumbotron {
+    .rider {
+      top: 55%;
+    }
+
+    .city {
+      right: 12%;
+      top: 45%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #jumbotron {
+    .text {
+      width: 400px;
+      h1 {
+        font-size: 6rem;
+      }
+    }
+    .rider {
+      top: 55%;
+      width: 450px;
+    }
+
+    .city {
+      width: 450px;
+      right: 12%;
+      top: 45%;
+    }
+  }
 }
 </style>
