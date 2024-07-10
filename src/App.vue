@@ -1,8 +1,8 @@
 <template>
-  <!-- <HeaderComponent /> -->
+  <!-- <HeaderComponent v-if="!$route.meta.noLayout" /> -->
   <main>
     <router-view></router-view>
-    <FooterComponent />
+    <FooterComponent v-if="!$route.meta.noLayout" />
   </main>
   
 </template>

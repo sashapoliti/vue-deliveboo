@@ -28,6 +28,7 @@ const routes = [
     path: "/:pathMatch(.*)*",
     name: "not-found",
     component: NotFound,
+    meta: { noLayout: true }
   },
 ];
 
