@@ -110,7 +110,7 @@
           class="col-12"
           v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
         >
-          <div class="row">
+          <div class="row main-row-2">
             <div
               v-for="restaurant in restaurants"
               :key="restaurant.id"
@@ -601,6 +601,13 @@ export default {
         transform: rotate(-1turn);
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-row-2 {
+    height: 860px;
+    overflow-y: auto;
   }
 }
 </style>

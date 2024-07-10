@@ -99,7 +99,7 @@
             <a href="#" @click.prevent>Sicurezza</a>
           </li>
         </ul>
-        <ul>
+        <ul class="via">
           <p>Seguici</p>
           <li>
             <a href="#" @click.prevent>Facebook</a>
@@ -263,6 +263,26 @@ footer {
     color: $primary-color;
     padding-bottom: 40px;
     font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    .container {
+      max-width: fit-content;
+      width: 100% !important;
+      padding: 0 20px;
+    }
+    .links {
+      ul {
+        p {
+          margin: 0 10px;
+        }
+      }
+          .via {
+            display: none;
+          }
+    }
   }
 }
 </style>

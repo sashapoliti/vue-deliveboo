@@ -4,7 +4,8 @@
       Il carrello è vuoto
     </div>
     <div class="cart-container" v-else>
-      <div v-for="item in store.cart" :key="item.product.id" class="cart-item mt-3">
+      <div class="cart-wrapper">
+        <div v-for="item in store.cart" :key="item.product.id" class="cart-item mt-3">
         <div class="info d-flex align-items-center">
           <div class="img-container me-2">
             <img :src="item.product.image
@@ -36,13 +37,16 @@
             </div>
           </div>
         </div>
+      
+      
 
         <button class="remove-button " @click="store.functions.removeFromCart(item.product)" :class="{ none: store.flag === true}">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
+      </div>
 
-      <h5 class="my-3">Totale: {{ totalPrice }} €</h5>
+      <h5 class="my-3 text-end">Totale: {{ totalPrice }} €</h5>
     </div>
   </div>
 </template>
@@ -83,6 +87,10 @@ export default {
   display: none;
 }
 .cart-container {
+  .cart-wrapper {
+    max-height: 608px;
+    overflow-y: auto;
+  }
   .cart-item {
     .img-container {
       width: 80px;
