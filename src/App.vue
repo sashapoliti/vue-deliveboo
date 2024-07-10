@@ -1,5 +1,5 @@
 <template>
-  <!-- <HeaderComponent v-if="!$route.meta.noLayout" /> -->
+  <HeaderComponent v-if="!$route.meta.noLayout" /> 
   <main>
     <router-view></router-view>
     <FooterComponent v-if="!$route.meta.noLayout" />
