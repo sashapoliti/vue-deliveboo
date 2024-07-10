@@ -140,7 +140,6 @@ export default {
         customer_address: this.address,
         total_price: this.store.data.totalPrice,
         cart: this.store.cart,
-        restaurant_name: this.store.restaurantcart.name
       };
 
       axios
