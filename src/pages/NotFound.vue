@@ -1,4 +1,5 @@
 <template>
+    <div class="container d-flex justify-content-center">
         <div class="text-center" id="first_dino">
             <img src="/images/dino_game/dino.png" alt="dino" >
             <h3 class="align-content-end">404 NOT FOUND</h3>
@@ -10,6 +11,7 @@
                 <button>RESTART</button>
             </div>
         </div>
+    </div>
 </template>
 
 <script>
