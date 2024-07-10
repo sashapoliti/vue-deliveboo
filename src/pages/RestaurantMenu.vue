@@ -24,7 +24,7 @@
 
         <div class="cart-container">
           <h2>Carrello</h2>
-          <div class="linea"></div>
+          
           <ShoppingCart :cart="store.cart" />
           <div class="text-center">
       <button class="btn red-button" @click="$router.push({ name: 'checkout' })"
@@ -168,12 +168,6 @@ export default {
   .cart-container {
     width: 25%;
     margin-left: 30px;
-
-    .linea {
-      width: 100%;
-      height: 1px;
-      background-color: #e6d4c3;
-    }
   }
 }
 

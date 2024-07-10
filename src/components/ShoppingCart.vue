@@ -6,46 +6,47 @@
     <div class="cart-container" v-else>
       <div class="cart-wrapper">
         <div v-for="item in store.cart" :key="item.product.id" class="cart-item mt-3">
-        <div class="info d-flex align-items-center">
-          <div class="img-container me-2">
-            <img :src="item.product.image
+          <div class="info d-flex align-items-center">
+            <div class="img-container me-2">
+              <img :src="item.product.image
                 ? 'http://127.0.0.1:8000/storage/' + item.product.image
                 : this.store.api.defaultImg
-              " @error="setDefaultImage" :alt="item.product.name" />
-          </div>
-          <div>
-            <h3 class="text-center">
-              {{ item.product.name }}
-            </h3>
-            <div class="changeQuantity d-flex align-items-center justify-content-center">
-              <span class="me-2">{{ item.product.price}} €</span>
-              <button class="changeMinus" @click="
-                store.functions.updateQuantity(
-                  item.product,
-                  item.quantity - 1)"  :class="{ none: store.flag === true}">
-                -
-              </button>
-              <span class="mx-2">{{ item.quantity }}</span>
-              <button class="changePlus" @click="
-                store.functions.updateQuantity(
-                  item.product,
-                  item.quantity + 1
-                )
-                "  :class="{ none: store.flag === true}">
-                +
-              </button>
+                " @error="setDefaultImage" :alt="item.product.name" />
+            </div>
+            <div>
+              <h3 class="text-center">
+                {{ item.product.name }}
+              </h3>
+              <div class="changeQuantity d-flex align-items-center justify-content-center">
+                <span class="me-2">{{ item.product.price }} €</span>
+                <button class="changeMinus" @click="
+                  store.functions.updateQuantity(
+                    item.product,
+                    item.quantity - 1)" :class="{ none: store.flag === true }">
+                  -
+                </button>
+                <span class="mx-2">{{ item.quantity }}</span>
+                <button class="changePlus" @click="
+                  store.functions.updateQuantity(
+                    item.product,
+                    item.quantity + 1
+                  )
+                  " :class="{ none: store.flag === true }">
+                  +
+                </button>
+              </div>
             </div>
           </div>
+
+
+
+          <button class="remove-button " @click="store.functions.removeFromCart(item.product)"
+            :class="{ none: store.flag === true }">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
-      
-      
-
-        <button class="remove-button " @click="store.functions.removeFromCart(item.product)" :class="{ none: store.flag === true}">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
       </div>
-      </div>
-
+          
       <h5 class="my-3 text-end">Totale: {{ totalPrice }} €</h5>
     </div>
   </div>
@@ -86,11 +87,29 @@ export default {
 .none {
   display: none;
 }
+
 .cart-container {
   .cart-wrapper {
-    max-height: 608px;
+    max-height: 580px;
     overflow-y: auto;
   }
+
+  /* Per Webkit (Chrome, Safari, Edge) */
+  .cart-wrapper::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .cart-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .cart-wrapper::-webkit-scrollbar-thumb {
+    background-color: #FFE4C4;
+    border-radius: 6px;
+    border: 3px solid transparent;
+    /* Se vuoi spazio attorno alla scrollbar */
+  }
+
   .cart-item {
     .img-container {
       width: 80px;

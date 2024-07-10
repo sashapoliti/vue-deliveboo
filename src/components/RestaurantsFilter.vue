@@ -604,10 +604,27 @@ export default {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
   .main-row-2 {
-    height: 860px;
+    max-height: 860px;
     overflow-y: auto;
-  }
+}
+
+/* Per Webkit (Chrome, Safari, Edge) */
+.main-row-2::-webkit-scrollbar {
+    width: 12px;
+}
+
+.main-row-2::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-row-2::-webkit-scrollbar-thumb {
+    background-color: #FFE4C4;
+    border-radius: 6px;
+    border: 3px solid transparent; /* Se vuoi spazio attorno alla scrollbar */
+}
+
+
 }
 </style>
