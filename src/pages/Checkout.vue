@@ -349,6 +349,11 @@ export default {
     }
   }
 }
+@media screen and (max-width: 1300px) {
+  .container-checkout {
+    width: 80%;
+  }
+}
 .home-button {
   text-transform: uppercase;
   margin: 10px 0px 5px 0px;
