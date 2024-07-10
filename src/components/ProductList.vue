@@ -61,7 +61,7 @@
 
   <div class="row">
     <div
-      class="col-12 col-md-6 col-lg-4 mb-4"
+      class="col-12  col-lg-6  col-xl-4 mb-4"
       v-for="product in sortedPlates"
       :key="product.id"
     >

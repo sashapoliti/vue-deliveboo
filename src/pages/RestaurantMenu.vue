@@ -24,7 +24,6 @@
 
         <div class="cart-container">
           <h2>Carrello</h2>
-          
           <ShoppingCart :cart="store.cart" />
           <div class="text-center">
       <button class="btn red-button" @click="$router.push({ name: 'checkout' })"
@@ -160,6 +159,7 @@ export default {
 
 .container-bottom {
   margin-top: -60px;
+  width: 1200px;
 
   .cards-container {
     width: 75%;
@@ -184,4 +184,20 @@ export default {
     filter: brightness(0.9);
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .cards-container {
+    width: 2200px !important;
+  }
+
+  .cart-container {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 576px)  {
+    .container-sm, .container {
+      max-width: 100% !important;
+    }
+}
+
 </style>
