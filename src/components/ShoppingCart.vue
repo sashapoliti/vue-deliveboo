@@ -37,9 +37,6 @@
               </div>
             </div>
           </div>
-
-
-
           <button class="remove-button " @click="store.functions.removeFromCart(item.product)"
             :class="{ none: store.flag === true }">
             <i class="fa-solid fa-xmark"></i>

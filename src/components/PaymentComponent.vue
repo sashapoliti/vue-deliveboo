@@ -6,6 +6,7 @@
         @click="handleClick"
         class="btn pay-button"
         :disabled="disabled"
+        :class="{disabled: store.cart.length === 0}"
       >
         Procedi al pagamento
       </button>
