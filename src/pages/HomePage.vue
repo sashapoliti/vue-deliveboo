@@ -480,14 +480,20 @@ export default {
       top: 45%;
     }
   }
-}
-
-@media screen and (min-width: 700px) {
   .city.animate{
     transform: translateX(-193vw) !important;
   }
   .rider.animate{
     transform: translateX(-190vw) !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .city.animate{
+    transform: translateX(-197vw) !important;
+  }
+  .rider.animate{
+    transform: translateX(-195vw) !important;
   }
 }
 
@@ -509,6 +515,13 @@ export default {
       right: 12%;
       top: 45%;
     }
+  }
+
+  .city.animate{
+    transform: translateX(-204vw) !important;
+  }
+  .rider.animate{
+    transform: translateX(-202vw) !important;
   }
 }
 
