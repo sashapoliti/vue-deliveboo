@@ -1,5 +1,5 @@
 <template>
-    <div class="container d-flex justify-content-center">
+    <div class="container dino_container">
         <div class="text-center" id="first_dino">
             <img src="/images/dino_game/dino.png" alt="dino" >
             <h3 class="align-content-end">404 NOT FOUND</h3>
@@ -24,7 +24,9 @@ export default {
     body {
         text-align: center;
     }
-
+    .dino_container {
+        padding-top: 200px;
+    }
     #board {
         display: none;
         background-color: rgb(255, 255, 255);
