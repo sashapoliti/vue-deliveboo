@@ -19,7 +19,7 @@
         </li>
         <li>
           <router-link class="mx-3"
-            >Contatti
+            >Noi
             <div class="point d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-circle"></i>
             </div>
@@ -27,24 +27,52 @@
         </li>
         <li>
           <router-link class="mx-3"
-            >Noi
+            >Contatti
             <div class="point d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-circle"></i>
             </div>
           </router-link>
         </li>
       </ul>
-      <div class="functions">c</div>
+      <ul class="functions d-flex align-items-center">
+        <li>
+          <a href="http://localhost:8000/login" @click.prevent
+            >Accedi
+            <div class="point d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-circle"></i>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="http://localhost:8000/register" @click.prevent
+            >Registrati
+            <div class="point d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-circle"></i>
+            </div>
+          </a>
+        </li>
+        <li class="cart">
+          <router-link to="/checkout">
+            <button class="btn red-button">
+              Carrello <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </router-link>
+        </li>
+      </ul>
     </nav>
   </header>
 </template>
 
 <script>
+import { store } from "../store";
+
 export default {
   name: "HeaderComponent",
   data() {
     return {
+      store,
       isFixed: false,
+      cartLength: 0,
     };
   },
   mounted() {
@@ -57,7 +85,18 @@ export default {
     handleScroll() {
       this.isFixed = window.scrollY > 300;
     },
+    handleStorageEvent(event) {
+      if (event.key === "cart") {
+        this.$forceUpdate();
+      }
+    },
   },
+  computed: {
+    cartLength() {
+      const cart = localStorage.getItem("cart");
+      return cart ? JSON.parse(cart).length : 0;
+    },
+  }
 };
 </script>
 
@@ -135,6 +174,58 @@ header {
                 color: $tertiary-color;
               }
             }
+          }
+        }
+      }
+    }
+
+    .functions {
+      margin: 0;
+      padding: 0;
+      li {
+        a {
+          position: relative;
+          padding: 5px 10px;
+          font-size: 1.1rem;
+          color: $text-color;
+          font-weight: 600;
+          transition: color 0.3s ease-in-out;
+          .point {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            font-size: 0.7rem;
+            color: $tertiary-color;
+            left: calc(50% - 10px);
+            bottom: -15px;
+            i {
+              color: transparent;
+              transition: color 0.3s ease-in-out;
+            }
+          }
+          &:hover {
+            color: $tertiary-color;
+            .point {
+              i {
+                color: $tertiary-color;
+              }
+            }
+          }
+        }
+      }
+
+      .cart {
+        .red-button {
+          text-transform: uppercase;
+          font-weight: 600;
+          padding: 7px 20px 7px 20px;
+          border-radius: 50px;
+          background-color: $tertiary-color;
+          color: $primary-color;
+          transition: filter 0.3s ease-in-out;
+
+          &:hover {
+            filter: brightness(0.9);
           }
         }
       }
