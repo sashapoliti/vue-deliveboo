@@ -3,15 +3,15 @@
   <div id="jumbotron">
     <div v-if="store.data.emptyCart" class="alert alert-warning">
       {{ store.data.emptyCart }}
-    </div>     
-      <transition name="slide" mode="out-in">
-        <div class="city" @click="goToRestaurants" :key="currentCityIndex">
-          <img :src="currentCityImage" alt="Immagine della città" />
-        </div>
-      </transition>
-      <div class="rider">
-        <img src="/images/jumbotron/rider.png" alt="Immagine del rider" />
+    </div>
+    <transition name="slide" mode="out-in">
+      <div class="city" @click="goToRestaurants" :key="currentCityIndex">
+        <img :src="currentCityImage" alt="Immagine della città" />
       </div>
+    </transition>
+    <div class="rider">
+      <img src="/images/jumbotron/rider.png" alt="Immagine del rider" />
+    </div>
     <div class="text">
       <h1 class="text-uppercase">
         Il tuo <br />
@@ -51,9 +51,7 @@
               </p>
             </div>
           </div>
-
           <div class="pois"></div>
-
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
               <img src="/images/instructions/scooter.png" alt="Immagine numero 1" />
@@ -66,9 +64,7 @@
               </p>
             </div>
           </div>
-
           <div class="pois"></div>
-
           <div class="step d-flex my-4 align-items-center">
             <div class="image">
               <img src="/images/instructions/food.png" alt="Immagine numero 1" />
@@ -90,6 +86,7 @@
     <RestaurantsFilter />
   </section>
 </template>
+
 
 <script>
 import RestaurantsFilter from "../components/RestaurantsFilter.vue";
@@ -180,6 +177,41 @@ export default {
   background-repeat: no-repeat;
   overflow: hidden;
 
+  .city,
+  .rider,
+  .text {
+    position: absolute;
+    transition: transform 0.5s;
+    transition-delay: 0.6s;
+  }
+  // .city {
+  //   left: 210vw;
+  //   // transform: translateX(-150vw);
+  // }
+
+  // .rider {
+  //   left: 220vw;
+  //   // transform: translateX(-150vw);
+  // }
+
+  // .text {
+  //   left: -150vw;
+  //   // transform: translateX(150vw);
+  // }
+
+  .text.animate {
+    left: -150vw;
+    transform: translateX(150vw);	
+  }
+  .city.animate{
+    left: 210vw;
+    transform: translateX(-150vw);
+  }
+  .rider.animate{
+    left: 220vw;
+    transform: translateX(-150vw);
+  }
+
   .text {
     width: 600px;
     padding-top: 8%;
@@ -233,7 +265,7 @@ export default {
   }
 
   .city {
-    position: absolute;
+    // position: absolute;
     z-index: 9;
     width: 500px;
     bottom: calc(50% - 80px);
@@ -246,7 +278,7 @@ export default {
   }
 
   .rider {
-    position: absolute;
+    // position: absolute;
     z-index: 10;
     width: 500px;
     bottom: calc(50% - 230px);
