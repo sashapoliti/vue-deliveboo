@@ -13,12 +13,14 @@
     </div>
 
     <div class="container-bottom container">
-      <div class="text-center my-3 mb-5">
-        <h2 class="text-uppercase">Menu</h2>
-      </div>
+
 
       <div class="container d-flex">
+
         <div class="cards-container">
+          <div class="text-center my-3 mb-5">
+            <h2 class="text-uppercase">Menu</h2>
+          </div>
           <ProductList :products="products" />
         </div>
 
@@ -26,11 +28,11 @@
           <h2>Carrello</h2>
           <ShoppingCart :cart="store.cart" />
           <div class="text-center">
-      <button class="btn red-button" @click="$router.push({ name: 'checkout' })"
-        :disabled="store.cart.length === 0">
-        Vai all'ordine
-      </button>
-    </div>
+            <button class="btn red-button" @click="$router.push({ name: 'checkout' })"
+              :disabled="store.cart.length === 0">
+              Vai all'ordine
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -180,6 +182,7 @@ export default {
   background-color: $tertiary-color;
   color: $primary-color;
   transition: filter 0.3s ease-in-out;
+
   &:hover {
     filter: brightness(0.9);
   }
@@ -194,10 +197,12 @@ export default {
     width: 100% !important;
   }
 }
-@media screen and (min-width: 576px)  {
-    .container-sm, .container {
-      max-width: 100% !important;
-    }
-}
 
+@media screen and (min-width: 576px) {
+
+  .container-sm,
+  .container {
+    max-width: 100% !important;
+  }
+}
 </style>

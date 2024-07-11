@@ -23,18 +23,12 @@
           Ristoranti trovati ({{ restaurants.length }})
         </span>
         <div class="pagination">
-          <button
-            :disabled="currentPage === 1"
-            @click="setParams(currentPage - 1)"
-          >
-            Precedente
+          <button :disabled="currentPage === 1" @click="setParams(currentPage - 1)">
+            <i class="fa-solid fa-angles-left"></i>
           </button>
           <span>Pagina {{ currentPage }} di {{ totalPage }}</span>
-          <button
-            :disabled="currentPage === totalPage"
-            @click="setParams(currentPage + 1)"
-          >
-            Successivo
+          <button :disabled="currentPage === totalPage" @click="setParams(currentPage + 1)">
+            <i class="fa-solid fa-angles-right"></i>
           </button>
         </div>
       </div>
@@ -122,36 +116,36 @@ export default {
   },
   methods: {
     updateSelectedTypes(typeId) {
-        if (this.selectedTypes.includes(typeId)) {
-            this.selectedTypes = this.selectedTypes.filter((id) => id !== typeId);
-        } else {
-            this.selectedTypes.push(typeId);
-        }
+      if (this.selectedTypes.includes(typeId)) {
+        this.selectedTypes = this.selectedTypes.filter((id) => id !== typeId);
+      } else {
+        this.selectedTypes.push(typeId);
+      }
 
-        if (this.selectedTypes.length === 0) {
-            this.restaurants = [];
-            return;
-        } else {
-            this.fetchRestaurants(1); // Ricomincia dalla prima pagina
-        }
+      if (this.selectedTypes.length === 0) {
+        this.restaurants = [];
+        return;
+      } else {
+        this.fetchRestaurants(1); // Ricomincia dalla prima pagina
+      }
     },
     fetchRestaurants(page = 1) {
-        this.loading = true;
-        axios
-            .post(this.store.api.baseUrl + this.store.api.restaurants, {
-                type: this.selectedTypes,
-                page: page,
-            })
-            .then((response) => {
-                this.restaurants = response.data.results;
-                this.currentPage = response.data.current_page;
-                this.totalPage = response.data.last_page;
-                this.totalResults = response.data.total;
-            })
-            .catch((error) => {})
-            .finally(() => {
-                this.loading = false;
-            });
+      this.loading = true;
+      axios
+        .post(this.store.api.baseUrl + this.store.api.restaurants, {
+          type: this.selectedTypes,
+          page: page,
+        })
+        .then((response) => {
+          this.restaurants = response.data.results;
+          this.currentPage = response.data.current_page;
+          this.totalPage = response.data.last_page;
+          this.totalResults = response.data.total;
+        })
+        .catch((error) => { })
+        .finally(() => {
+          this.loading = false;
+        });
     },
     setParams(page) {
       if (page >= 1 && page <= this.totalPage) {
@@ -168,24 +162,29 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/partials/_variables.scss";
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0px 0px 10px 0px;
+
   button {
-    padding: 10px 15px 10px 15px;
-    margin: 0px 10px ;
-    border: none;
-    background-color: $tertiary-color;
-    color: $primary-color;
+    aspect-ratio: 1/1;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #FFE4C4;
+    margin: 0px 10px;
+    border: 1px solid #ecbf87;
     font-weight: 600;
     transition: filter 0.3s ease-in-out;
+
     &:hover {
       filter: brightness(0.9);
     }
   }
 }
+
 .filter {
   width: 20%;
 
