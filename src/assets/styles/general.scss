@@ -38,6 +38,26 @@ body {
     }
 }
 
+
+/* Per Webkit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 15px; /* Larghezza della scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: transparent; /* Sfondo trasparente per la track */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #ffc988;
+    border: 2px solid transparent; /* Bordo del thumb */
+    background-clip: padding-box; /* Per mantenere il bordo */
+    border-radius: 10px; /* Arrotondamento degli angoli */
+  }
+  
+  body::-webkit-scrollbar-thumb:hover {
+    background-color: #ffbd6c; /* Colore del thumb quando si passa sopra con il mouse */
+  }
 #app {
     height: 100vh;
     width: 100%;
