@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="!store.data.flagOrder"
-    class="container-checkout card rounded-5 my-5"
-  >
+  <div v-if="!store.data.flagOrder" class="container-checkout card rounded-5 ">
     <div class="d-flex justify-content-center mb-3 mt-5">
       <h1>Carrello</h1>
     </div>
@@ -16,84 +13,40 @@
         <div class="container">
           <div class="row">
             <div class="col-6">
-              <label for="name"
-                >Nome <strong class="text-danger">*</strong></label
-              >
-              <input
-                type="text"
-                id="name"
-                ref="name"
-                maxlength="50"
-                v-model="name"
-                class="form-control my-3"
-              />
+              <label for="name">Nome <strong class="text-danger">*</strong></label>
+              <input type="text" id="name" ref="name" maxlength="50" v-model="name" class="form-control my-3" />
               <span v-if="errors.name" class="text-danger">{{
                 errors.name
               }}</span>
             </div>
             <div class="col-6">
-              <label for="surname"
-                >Cognome <strong class="text-danger">*</strong></label
-              >
-              <input
-                type="text"
-                id="surname"
-                ref="surname"
-                v-model="surname"
-                maxlength="50"
-                class="form-control my-3"
-              />
+              <label for="surname">Cognome <strong class="text-danger">*</strong></label>
+              <input type="text" id="surname" ref="surname" v-model="surname" maxlength="50"
+                class="form-control my-3" />
               <span v-if="errors.surname" class="text-danger">{{
                 errors.surname
               }}</span>
             </div>
           </div>
-          <label for="email"
-            >Email <strong class="text-danger">*</strong></label
-          >
-          <input
-            type="email"
-            id="email"
-            ref="email"
-            v-model="email"
-            maxlength="50"
-            class="form-control my-3"
-            required
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-          />
+          <label for="email">Email <strong class="text-danger">*</strong></label>
+          <input type="email" id="email" ref="email" v-model="email" maxlength="50" class="form-control my-3" required
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
           <span v-if="errors.email" class="text-danger">{{
             errors.email
           }}</span>
           <div class="row">
             <div class="col-6">
-              <label for="phone"
-                >Cellulare <strong class="text-danger">*</strong></label
-              >
-              <input
-                type="text"
-                id="phone"
-                ref="phone"
-                maxlength="10"
-                minlength="10"
-                v-model="phone"
-                class="form-control my-3"
-              />
+              <label for="phone">Cellulare <strong class="text-danger">*</strong></label>
+              <input type="text" id="phone" ref="phone" maxlength="10" minlength="10" v-model="phone"
+                class="form-control my-3" />
               <span v-if="errors.phone" class="text-danger">{{
                 errors.phone
               }}</span>
             </div>
             <div class="col-6">
-              <label for="address"
-                >Indirizzo <strong class="text-danger">*</strong></label
-              >
-              <input
-                type="text"
-                id="address"
-                ref="address"
-                v-model="address"
-                maxlength="50"
-                class="form-control my-3"
-              />
+              <label for="address">Indirizzo <strong class="text-danger">*</strong></label>
+              <input type="text" id="address" ref="address" v-model="address" maxlength="50"
+                class="form-control my-3" />
               <span v-if="errors.address" class="text-danger">{{
                 errors.address
               }}</span>
@@ -106,23 +59,15 @@
       <p class="mx-1" v-if="store.restaurantcart">
         Qui i dettagli dei tuoi piatti da "<strong>{{
           store.restaurantcart.name
-        }}</strong
-        >":
+        }}</strong>":
       </p>
       <div class="product-container">
         <ShoppingCart :cart="store.cart" />
       </div>
       <h2 class="mt-5">Pagamento</h2>
       <p class="mx-1">Scegli il tuo metodo di pagamento:</p>
-      <PaymentComponent
-        ref="paymentComponent"
-        :name="name"
-        :surname="surname"
-        :email="email"
-        :phone="phone"
-        :address="address"
-        @submit-payment="submitPayment"
-      />
+      <PaymentComponent ref="paymentComponent" :name="name" :surname="surname" :email="email" :phone="phone"
+        :address="address" @submit-payment="submitPayment" />
     </div>
   </div>
 
@@ -157,35 +102,25 @@
       <p class="mx-1">
         Qui i dettagli dei tuoi piatti da "<strong>{{
           store.data.order.restaurant_name
-        }}</strong
-        >":
+        }}</strong>":
       </p>
       <div class="product-container">
         <div class="cart-container w-100">
-          <div
-            v-for="item in store.data.order.cart"
-            :key="item.product.id"
-            class="cart-item mt-3"
-          >
+          <div v-for="item in store.data.order.cart" :key="item.product.id" class="cart-item mt-3">
             <div class="info d-flex align-items-center">
               <div class="img-container me-2">
-                <img
-                  :src="
-                    item.product.image
-                      ? 'http://127.0.0.1:8000/storage/' + item.product.image
-                      : this.store.api.defaultImg
-                  "
-                  @error="setDefaultImage"
-                  :alt="item.product.name"
-                />
+                <img :src="item.product.image
+                    ? 'http://127.0.0.1:8000/storage/' + item.product.image
+                    : this.store.api.defaultImg
+                  " @error="setDefaultImage" :alt="item.product.name" />
               </div>
-                <h3 class="text-center m-0">
-                  {{ item.product.name }}
-                </h3>
-                <div class="flex-grow-1 text-end">
-                  <span>{{ item.product.price }}€ </span>
-                  <span> x {{ item.quantity }}</span>
-                </div>
+              <h3 class="text-center m-0">
+                {{ item.product.name }}
+              </h3>
+              <div class="flex-grow-1 text-end">
+                <span>{{ item.product.price }}€ </span>
+                <span> x {{ item.quantity }}</span>
+              </div>
             </div>
           </div>
 
@@ -209,6 +144,10 @@ import ShoppingCart from "../components/ShoppingCart.vue";
 import { store } from "../store";
 
 export default {
+  components: {
+    PaymentComponent,
+    ShoppingCart,
+  },
   name: "Checkout",
   data() {
     return {
@@ -236,7 +175,16 @@ export default {
   unmounted() {
     this.orderStore();
   },
+  mounted() {
+    this.scrollToTop();
+  },
   methods: {
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    },
     orderStore() {
       this.store.data.flagOrder = false;
     },
@@ -315,17 +263,16 @@ export default {
       return `$${value.toFixed(2)}`;
     },
   },
-  components: {
-    PaymentComponent,
-    ShoppingCart,
-  },
+ 
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/styles/partials/_variables.scss";
+
 .container-checkout {
-  margin-top: 50px;
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
   width: 50%;
   margin: 0 auto;
 
@@ -349,11 +296,13 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 1300px) {
   .container-checkout {
     width: 80%;
   }
 }
+
 .home-button {
   text-transform: uppercase;
   margin: 10px 0px 5px 0px;
