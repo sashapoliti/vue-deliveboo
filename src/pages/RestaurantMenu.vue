@@ -210,5 +210,11 @@ export default {
   .container {
     max-width: 100% !important;
   }
+
+}
+@media screen and (max-width: 576px) {
+  .cart-container {
+    margin-left: 10px !important;
+  }
 }
 </style>

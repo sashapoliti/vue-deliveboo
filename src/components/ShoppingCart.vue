@@ -93,7 +93,7 @@ export default {
 
   /* Per Webkit (Chrome, Safari, Edge) */
   .cart-wrapper::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
   }
 
   .cart-wrapper::-webkit-scrollbar-track {
