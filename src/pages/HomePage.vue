@@ -491,11 +491,23 @@ export default {
 }
 
 @media screen and (max-width: 700px) {
+  #jumbotron {
+    .text {
+      h1 {
+        font-size: 6rem;
+      }
+    }
+
+    .rider {
+      top: 63%;
+      width: 400px;
+    }
+  }
   .city.animate{
-    transform: translateX(-197vw) !important;
+    transform: translateX(-210vw) !important;
   }
   .rider.animate{
-    transform: translateX(-195vw) !important;
+    transform: translateX(-197vw) !important;
   }
 }
 
@@ -504,16 +516,16 @@ export default {
     .text {
       width: 400px;
       h1 {
-        font-size: 6rem;
+        font-size: 5.5rem;
       }
     }
     .rider {
       top: 55%;
-      width: 450px;
+      width: 420px;
     }
 
     .city {
-      width: 450px;
+      width: 440px;
       right: 12%;
       top: 45%;
     }
@@ -523,7 +535,7 @@ export default {
     transform: translateX(-204vw) !important;
   }
   .rider.animate{
-    transform: translateX(-202vw) !important;
+    transform: translateX(-204vw) !important;
   }
 }
 

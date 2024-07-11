@@ -17,7 +17,7 @@
             </div>
           </router-link>
         </li>
-        <li>
+        <li class="about">
           <router-link class="mx-3"
             >Noi
             <div class="point d-flex justify-content-center align-items-center">
@@ -25,7 +25,7 @@
             </div>
           </router-link>
         </li>
-        <li>
+        <li class="contacts">
           <router-link class="mx-3"
             >Contatti
             <div class="point d-flex justify-content-center align-items-center">
@@ -35,17 +35,21 @@
         </li>
       </ul>
       <ul class="functions d-flex align-items-center">
-        <li>
+        <li class="login">
           <a href="http://localhost:8000/login" @click.prevent
-            >Accedi
+            >
+            <i class="d-none fa-solid fa-user"></i>
+            Accedi
             <div class="point d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-circle"></i>
             </div>
           </a>
         </li>
-        <li>
+        <li class="register">
           <a href="http://localhost:8000/register" @click.prevent
-            >Registrati
+            >
+            <i class="d-none fa-solid fa-id-card"></i>
+            Registrati
             <div class="point d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-circle"></i>
             </div>
@@ -54,7 +58,7 @@
         <li class="cart">
           <router-link to="/checkout">
             <button class="btn red-button">
-              Carrello <i class="fa-solid fa-cart-shopping"></i>
+              <span>Carrello</span> <i class="fa-solid fa-cart-shopping"></i>
             </button>
           </router-link>
         </li>
@@ -229,6 +233,22 @@ header {
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .links {
+    .contacts {
+      display: none;
+    }
+    .about {
+      display: none;
+    }
+  }
+  .functions {
+    span {
+      display: none;
     }
   }
 }
