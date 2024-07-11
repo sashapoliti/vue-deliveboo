@@ -4,8 +4,8 @@
     store.restaurantcart &&
     store.restaurantcart.id !== store.data.restaurant.id &&
     store.restaurantcart.id !== ''
-  " class="modal fade" :class="{ show: showModal }" id="exampleModal" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  " class="modal fade" :class="{ show: showModal }" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -36,8 +36,8 @@
     <div class="col-12  col-lg-6  col-xl-4 mb-4" v-for="product in paginatedPlates" :key="product.id">
       <div class="card h-100">
         <img :src="product.image
-            ? 'http://127.0.0.1:8000/storage/' + product.image
-            : store.api.defaultImg
+          ? 'http://127.0.0.1:8000/storage/' + product.image
+          : store.api.defaultImg
           " @error="setDefaultImage" class="card-img-top" :alt="product.name" />
         <div class="card-body d-flex flex-column justify-content-between">
           <h3 class="card-title">{{ product.name }}</h3>
@@ -63,11 +63,11 @@
     </div>
   </div>
   <div class="pagination" v-if="totalPages > 1">
-    <button :disabled="currentPage === 1" @click="currentPage--" >
+    <button :disabled="currentPage === 1" @click="currentPage--">
       <i class="fa-solid fa-angles-left"></i>
     </button>
     <span>Pagina {{ currentPage }} di {{ totalPages }}</span>
-    <button :disabled="currentPage === totalPages" @click="currentPage++" >
+    <button :disabled="currentPage === totalPages" @click="currentPage++">
       <i class="fa-solid fa-angles-right"></i>
     </button>
   </div>

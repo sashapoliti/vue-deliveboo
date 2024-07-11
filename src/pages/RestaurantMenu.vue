@@ -21,7 +21,10 @@
           <div class="text-center my-3 mb-5">
             <h2 class="text-uppercase">Menu</h2>
           </div>
-          <ProductList :products="products" />
+          <ProductList :products="products" v-if="products.length > 0" />
+            <div v-else class="text-center my-3"> 
+              <img src="/images/no-plate.png" alt="Non ci sono piatti" class="no-plate">
+            </div>
         </div>
 
         <div class="cart-container">
@@ -165,6 +168,9 @@ export default {
 
   .cards-container {
     width: 75%;
+    .no-plate {
+      width: 50%;
+    }
   }
 
   .cart-container {
