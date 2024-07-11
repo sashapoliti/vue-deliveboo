@@ -36,7 +36,7 @@
       </ul>
       <ul class="functions d-flex align-items-center">
         <li class="login">
-          <a href="http://localhost:8000/login" @click.prevent
+          <a href="http://localhost:8000/login" 
             >
             <i class="d-none fa-solid fa-user"></i>
             Accedi
@@ -46,7 +46,7 @@
           </a>
         </li>
         <li class="register">
-          <a href="http://localhost:8000/register" @click.prevent
+          <a href="http://localhost:8000/register" 
             >
             <i class="d-none fa-solid fa-id-card"></i>
             Registrati
