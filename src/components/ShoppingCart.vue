@@ -106,6 +106,9 @@ export default {
     border: 3px solid transparent;
     /* Se vuoi spazio attorno alla scrollbar */
   }
+  .cart-wrapper::-webkit-scrollbar-thumb:hover {
+    background-color: #ffd7a7; /* Colore del thumb quando si passa sopra con il mouse */
+  }
 
   .cart-item {
     .img-container {
