@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-  <div class="pagination">
+  <div class="pagination" v-if="totalPages > 1">
     <button :disabled="currentPage === 1" @click="currentPage--" >
       <i class="fa-solid fa-angles-left"></i>
     </button>

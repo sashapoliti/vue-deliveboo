@@ -22,7 +22,7 @@
         <span class="fw-bold ms-1">
           Ristoranti trovati ({{ restaurants.length }})
         </span>
-        <div class="pagination">
+        <div class="pagination" v-if="totalPage > 1">
           <button :disabled="currentPage === 1" @click="setParams(currentPage - 1)">
             <i class="fa-solid fa-angles-left"></i>
           </button>
