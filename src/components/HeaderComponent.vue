@@ -75,7 +75,6 @@ header {
   right: 0;
   z-index: 999;
   background-color: $primary-color;
-  border-bottom: 2px solid $primary-color-2;
   transition: position 1s;
   &.fixed-navbar {
     position: fixed;
