@@ -3,55 +3,40 @@
     <!-- filter -->
     <div class="filter d-flex flex-column">
       <span class="fw-bold ms-1 mb-2"><small>Lista dei filtri</small></span>
-      <div
-        class="filter-box mb-2 pb-2"
-        v-for="item in store.data.types"
-        :key="item.id"
-      >
-        <label
-          :for="'checkbox-' + item.id"
-          class="container-checkbox d-flex align-items-center"
-        >
-          <input
-            type="checkbox"
-            :id="'checkbox-' + item.id"
-            @change="updateSelectedTypes(item.id)"
-          />
-          <div
-            class="checkmark d-flex justify-content-center align-items-center"
-          >
+      <div class="filter-box mb-2 pb-2" v-for="item in store.data.types" :key="item.id">
+        <label :for="'checkbox-' + item.id" class="container-checkbox d-flex align-items-center">
+          <input type="checkbox" :id="'checkbox-' + item.id" @change="updateSelectedTypes(item.id)" />
+          <div class="checkmark d-flex justify-content-center align-items-center">
             <img :src="item.image" alt="" />
           </div>
-          <span
-            class="ms-2"
-            :style="{
-              'font-weight': selectedTypes.includes(item.id) ? 'bolder' : '500',
-            }"
-            >{{ item.name }}</span
-          >
+          <span class="ms-2" :style="{
+            'font-weight': selectedTypes.includes(item.id) ? 'bolder' : '500',
+          }">{{ item.name }}</span>
         </label>
       </div>
     </div>
 
     <!-- restaurants -->
     <div class="restaurants container">
-      <span
-        class="fw-bold ms-1"
-        v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
-      >
-        Ristoranti trovati ({{ restaurants.length }})
-      </span>
+      <div class="d-flex justify-content-between" v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading">
+        <span class="fw-bold ms-1">
+          Ristoranti trovati ({{ restaurants.length }})
+        </span>
+        <div class="pagination">
+          <button :disabled="currentPage === 1" @click="setParams(currentPage - 1)">
+            <i class="fa-solid fa-angles-left"></i>
+          </button>
+          <span>Pagina {{ currentPage }} di {{ totalPage }}</span>
+          <button :disabled="currentPage === totalPage" @click="setParams(currentPage + 1)">
+            <i class="fa-solid fa-angles-right"></i>
+          </button>
+        </div>
+      </div>
+
       <div class="row main-row pt-2">
         <!-- loader -->
-        <div
-          class="loader col-12 h-100 d-flex justify-content-center align-items-center"
-          v-if="loading"
-        >
-          <div
-            aria-label="Orange and tan hamster running in a metal wheel"
-            role="img"
-            class="wheel-and-hamster"
-          >
+        <div class="loader col-12 h-100 d-flex justify-content-center align-items-center" v-if="loading">
+          <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
             <div class="wheel"></div>
             <div class="hamster">
               <div class="hamster__body">
@@ -72,54 +57,33 @@
         </div>
 
         <!-- No filters selected -->
-        <div
-          class="col-12 h-100 d-flex justify-content-center align-items-center no-filters"
-          v-if="selectedTypes.length === 0 && !loading"
-        >
+        <div class="col-12 h-100 d-flex justify-content-center align-items-center no-filters"
+          v-if="selectedTypes.length === 0 && !loading">
           <div class="text-center">
             <div>
-              <img
-                class="w-75"
-                src="/images/filter_component/no_filter.png"
-                alt="Nessun filtro selezionato"
-              />
+              <img class="w-75" src="/images/filter_component/no_filter.png" alt="Nessun filtro selezionato" />
             </div>
           </div>
         </div>
 
         <!-- no results -->
-        <div
-          class="col-12 h-100 d-flex justify-content-center align-items-center no-results"
-          v-if="
-            restaurants.length === 0 && selectedTypes.length > 0 && !loading
-          "
-        >
+        <div class="col-12 h-100 d-flex justify-content-center align-items-center no-results" v-if="
+          restaurants.length === 0 && selectedTypes.length > 0 && !loading
+        ">
           <div class="text-center">
             <div>
-              <img
-                src="/images/filter_component/no_results.png"
-                alt="Immagine no ristoranti"
-              />
+              <img src="/images/filter_component/no_results.png" alt="Immagine no ristoranti" />
             </div>
             <p>Non ci sono ristoranti...</p>
           </div>
         </div>
 
         <!-- restaurants -->
-        <div
-          class="col-12"
-          v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading"
-        >
+        <div class="col-12" v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading">
           <div class="row main-row-2">
-            <div
-              v-for="restaurant in restaurants"
-              :key="restaurant.id"
-              class="col-12 col-md-6 col-lg-4 mb-3"
-            >
-              <RouterLink
-                :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
-                @click="propRestaurant(restaurant)"
-              >
+            <div v-for="restaurant in restaurants" :key="restaurant.id" class="col-12 col-md-6 col-lg-4 mb-3">
+              <RouterLink :to="{ name: 'restaurant', params: { slug: restaurant.slug } }"
+                @click="propRestaurant(restaurant)">
                 <CardComponent :restaurant="restaurant" />
               </RouterLink>
             </div>
@@ -146,6 +110,8 @@ export default {
       restaurants: [],
       selectedTypes: [],
       loading: false,
+      currentPage: 1,
+      totalPage: 1,
     };
   },
   methods: {
@@ -155,31 +121,36 @@ export default {
       } else {
         this.selectedTypes.push(typeId);
       }
-      console.log(this.selectedTypes);
 
-      /* all checkboxes unchecked */
       if (this.selectedTypes.length === 0) {
         this.restaurants = [];
         return;
       } else {
-        this.fetchRestaurants();
+        this.fetchRestaurants(1); // Ricomincia dalla prima pagina
       }
     },
-    fetchRestaurants() {
+    fetchRestaurants(page = 1) {
       this.loading = true;
       axios
         .post(this.store.api.baseUrl + this.store.api.restaurants, {
           type: this.selectedTypes,
+          page: page,
         })
         .then((response) => {
-          console.log(response.data);
           this.restaurants = response.data.results;
-          console.log(this.restaurants);
+          this.currentPage = response.data.current_page;
+          this.totalPage = response.data.last_page;
+          this.totalResults = response.data.total;
         })
-        .catch((error) => {})
+        .catch((error) => { })
         .finally(() => {
           this.loading = false;
         });
+    },
+    setParams(page) {
+      if (page >= 1 && page <= this.totalPage) {
+        this.fetchRestaurants(page);
+      }
     },
     propRestaurant(object) {
       this.store.data.restaurant = {};
@@ -192,15 +163,40 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/partials/_variables.scss";
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 10px 0px;
+
+  button {
+    aspect-ratio: 1/1;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #FFE4C4;
+    margin: 0px 10px;
+    border: 1px solid #ecbf87;
+    font-weight: 600;
+    transition: filter 0.3s ease-in-out;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}
+
 .filter {
   width: 20%;
+
   .filter-box {
     border-bottom: 1px solid #e6d4c3;
   }
+
   span {
     font-size: 0.9rem;
     font-weight: 900;
   }
+
   .container-checkbox input {
     position: absolute;
     opacity: 0;
@@ -208,6 +204,7 @@ export default {
     height: 0;
     width: 0;
   }
+
   .container-checkbox {
     padding: 3px;
     display: block;
@@ -216,6 +213,7 @@ export default {
     font-size: 20px;
     user-select: none;
   }
+
   /* Create a custom checkbox */
   .checkmark {
     position: relative;
@@ -227,26 +225,32 @@ export default {
     width: 1.5em;
     background-color: $primary-color-2;
     border-radius: 56% 44% 45% 55% / 58% 53% 47% 42%;
+
     img {
       width: 25px;
     }
   }
+
   /* When the checkbox is checked, add a blue background */
-  .container-checkbox input:checked ~ .checkmark {
+  .container-checkbox input:checked~.checkmark {
     background-color: #fdc888;
   }
 }
+
 .restaurants {
   width: 80%;
   padding-left: 40px;
+
   .row.main-row {
     height: calc(100% - 25px);
+
     .no-results {
       img {
         width: 300px;
       }
     }
   }
+
   .loader {
     .wheel-and-hamster {
       --dur: 1s;
@@ -273,11 +277,9 @@ export default {
     }
 
     .wheel {
-      background: radial-gradient(
-        100% 100% at center,
-        hsla(0, 0%, 60%, 0) 47.8%,
-        hsl(0, 0%, 60%) 48%
-      );
+      background: radial-gradient(100% 100% at center,
+          hsla(0, 0%, 60%, 0) 47.8%,
+          hsl(0, 0%, 60%) 48%);
       z-index: 2;
     }
 
@@ -375,16 +377,14 @@ export default {
     .hamster__limb--br,
     .hamster__limb--bl {
       border-radius: 0.75em 0.75em 0 0;
-      clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 30%,
-        70% 90%,
-        70% 100%,
-        30% 100%,
-        40% 90%,
-        0% 30%
-      );
+      clip-path: polygon(0 0,
+          100% 0,
+          100% 30%,
+          70% 90%,
+          70% 100%,
+          30% 100%,
+          40% 90%,
+          0% 30%);
       top: 1em;
       left: 2.8em;
       width: 1.5em;
@@ -419,21 +419,17 @@ export default {
 
     .spoke {
       animation: spoke var(--dur) linear infinite;
-      background: radial-gradient(
-          100% 100% at center,
+      background: radial-gradient(100% 100% at center,
           hsl(0, 0%, 60%) 4.8%,
-          hsla(0, 0%, 60%, 0) 5%
-        ),
-        linear-gradient(
-            hsla(0, 0%, 55%, 0) 46.9%,
-            hsl(0, 0%, 65%) 47% 52.9%,
-            hsla(0, 0%, 65%, 0) 53%
-          )
-          50% 50% / 99% 99% no-repeat;
+          hsla(0, 0%, 60%, 0) 5%),
+        linear-gradient(hsla(0, 0%, 55%, 0) 46.9%,
+          hsl(0, 0%, 65%) 47% 52.9%,
+          hsla(0, 0%, 65%, 0) 53%) 50% 50% / 99% 99% no-repeat;
     }
 
     /* Animations */
     @keyframes hamster {
+
       from,
       to {
         transform: rotate(4deg) translate(-0.8em, 1.85em);
@@ -445,6 +441,7 @@ export default {
     }
 
     @keyframes hamsterHead {
+
       from,
       25%,
       50%,
@@ -462,6 +459,7 @@ export default {
     }
 
     @keyframes hamsterEye {
+
       from,
       90%,
       to {
@@ -474,6 +472,7 @@ export default {
     }
 
     @keyframes hamsterEar {
+
       from,
       25%,
       50%,
@@ -491,6 +490,7 @@ export default {
     }
 
     @keyframes hamsterBody {
+
       from,
       25%,
       50%,
@@ -508,6 +508,7 @@ export default {
     }
 
     @keyframes hamsterFRLimb {
+
       from,
       25%,
       50%,
@@ -525,6 +526,7 @@ export default {
     }
 
     @keyframes hamsterFLLimb {
+
       from,
       25%,
       50%,
@@ -542,6 +544,7 @@ export default {
     }
 
     @keyframes hamsterBRLimb {
+
       from,
       25%,
       50%,
@@ -559,6 +562,7 @@ export default {
     }
 
     @keyframes hamsterBLLimb {
+
       from,
       25%,
       50%,
@@ -576,6 +580,7 @@ export default {
     }
 
     @keyframes hamsterTail {
+
       from,
       25%,
       50%,
@@ -608,22 +613,23 @@ export default {
   .main-row-2 {
     max-height: 860px;
     overflow-y: auto;
-}
+  }
 
-/* Per Webkit (Chrome, Safari, Edge) */
-.main-row-2::-webkit-scrollbar {
+  /* Per Webkit (Chrome, Safari, Edge) */
+  .main-row-2::-webkit-scrollbar {
     width: 12px;
-}
+  }
 
-.main-row-2::-webkit-scrollbar-track {
+  .main-row-2::-webkit-scrollbar-track {
     background: transparent;
-}
+  }
 
-.main-row-2::-webkit-scrollbar-thumb {
+  .main-row-2::-webkit-scrollbar-thumb {
     background-color: #FFE4C4;
     border-radius: 6px;
-    border: 3px solid transparent; /* Se vuoi spazio attorno alla scrollbar */
-}
+    border: 3px solid transparent;
+    /* Se vuoi spazio attorno alla scrollbar */
+  }
 
 
 }
