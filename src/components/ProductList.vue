@@ -32,6 +32,18 @@
     </div>
   </div>
 
+  <div class="d-flex justify-content-between container align-items-center">
+    <div class="fw-bold ms-1"> Totale piatti: ({{ this.sortedPlates.length }})</div>
+    <div class="pagination" v-if="totalPages > 1">
+      <button :disabled="currentPage === 1" @click="currentPage--">
+        <i class="fa-solid fa-angles-left"></i>
+      </button>
+      <span>Pagina {{ currentPage }} di {{ totalPages }}</span>
+      <button :disabled="currentPage === totalPages" @click="currentPage++">
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
   <div class="row">
     <div class="col-12  col-lg-6  col-xl-4 mb-4" v-for="product in paginatedPlates" :key="product.id">
       <div class="card h-100">
@@ -62,15 +74,8 @@
       </div>
     </div>
   </div>
-  <div class="pagination" v-if="totalPages > 1">
-    <button :disabled="currentPage === 1" @click="currentPage--">
-      <i class="fa-solid fa-angles-left"></i>
-    </button>
-    <span>Pagina {{ currentPage }} di {{ totalPages }}</span>
-    <button :disabled="currentPage === totalPages" @click="currentPage++">
-      <i class="fa-solid fa-angles-right"></i>
-    </button>
-  </div>
+
+
 </template>
 
 <script>
