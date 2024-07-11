@@ -166,6 +166,7 @@ export default {
 }
 
 #jumbotron {
+  min-height: 800px;
   position: relative;
   z-index: 5;
   width: 100%;
@@ -410,6 +411,7 @@ export default {
 
 @media screen and (max-width: 1300px) {
   #jumbotron {
+    min-height: 1150px;
     .text {
       width: 400px;
       h1 {
