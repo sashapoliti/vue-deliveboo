@@ -51,18 +51,11 @@
       </div>
     </div>
   </div>
-  <!-- <div v-if="
-      store.restaurantcart &&
-      store.restaurantcart.id !== store.data.restaurant.id &&
-      store.restaurantcart.id !== ''
-    " class="alert alert-warning">
-      Non puoi ordinare da piu di un ristorante
-    </div> -->
 
   <div class="row">
     <div
       class="col-12  col-lg-6  col-xl-4 mb-4"
-      v-for="product in sortedPlates"
+      v-for="product in paginatedPlates"
       :key="product.id"
     >
       <div class="card h-100">
@@ -110,6 +103,21 @@
       </div>
     </div>
   </div>
+  <div class="pagination">
+    <button
+      :disabled="currentPage === 1"
+      @click="currentPage--"
+    >
+      Precedente
+    </button>
+    <span>Pagina {{ currentPage }} di {{ totalPages }}</span>
+    <button
+      :disabled="currentPage === totalPages"
+      @click="currentPage++"
+    >
+      Successivo
+    </button>
+  </div>
 </template>
 
 <script>
@@ -124,9 +132,10 @@ export default {
     return {
       store,
       showModal: false,
+      currentPage: 1,
+      itemsPerPage: 6, 
     };
   },
-  mounted() {},
   methods: {
     checkRestaurantCart(product) {
       if (
@@ -167,9 +176,18 @@ export default {
         .slice()
         .sort((a, b) => a.name.localeCompare(b.name));
     },
+    paginatedPlates() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.sortedPlates.slice(start, end);
+    },
+    totalPages() {
+      return Math.ceil(this.sortedPlates.length / this.itemsPerPage);
+    },
   },
 };
 </script>
+
 
 <style lang="scss" scoped>
 @import "../assets/styles/partials/_variables.scss";
@@ -229,6 +247,24 @@ export default {
 
   .card-title {
     font-weight: 800;
+  }
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+  button {
+    padding: 10px 15px 10px 15px;
+    margin: 0px 10px ;
+    border: none;
+    background-color: $tertiary-color;
+    color: $primary-color;
+    font-weight: 600;
+    transition: filter 0.3s ease-in-out;
+    &:hover {
+      filter: brightness(0.9);
+    }
   }
 }
 
