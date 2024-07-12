@@ -10,7 +10,7 @@
           </div>
         </li>
         <li>
-          <router-link class="mx-3" to="/">
+          <router-link active-class="active" class="mx-3" to="/">
             Home
             <div class="point d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-circle"></i>
@@ -172,6 +172,14 @@ header {
             }
           }
           &:hover {
+            color: $tertiary-color;
+            .point {
+              i {
+                color: $tertiary-color;
+              }
+            }
+          }
+          &.active {
             color: $tertiary-color;
             .point {
               i {
