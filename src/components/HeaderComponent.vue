@@ -180,7 +180,6 @@ header {
             }
           }
           &.active {
-            color: $tertiary-color;
             .point {
               i {
                 color: $tertiary-color;
