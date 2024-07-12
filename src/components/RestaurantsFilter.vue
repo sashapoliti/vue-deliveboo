@@ -20,7 +20,7 @@
     <div class="restaurants container">
       <div class="d-flex justify-content-between" v-if="restaurants.length > 0 && selectedTypes.length > 0 && !loading">
         <span class="fw-bold ms-1">
-          Ristoranti trovati ({{ restaurants.length }})
+          Ristoranti trovati ({{ total }})
         </span>
         <div class="pagination" v-if="totalPage > 1">
           <button :disabled="currentPage === 1" @click="setParams(currentPage - 1)">
@@ -112,6 +112,7 @@ export default {
       loading: false,
       currentPage: 1,
       totalPage: 1,
+      total: 0,
     };
   },
   methods: {
@@ -141,6 +142,7 @@ export default {
           this.currentPage = response.data.current_page;
           this.totalPage = response.data.last_page;
           this.totalResults = response.data.total;
+          this.total = response.data.total;
         })
         .catch((error) => { })
         .finally(() => {
