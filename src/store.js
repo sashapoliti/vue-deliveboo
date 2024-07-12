@@ -16,6 +16,7 @@ export const store = reactive({
     order: {},
     flagOrder: false
   },
+  loader: false,
   cart: [],
   restaurantcart: null,
   flag: false,

@@ -17,7 +17,7 @@
             </div>
           </router-link>
         </li>
-        <li class="about">
+        <!-- <li class="about">
           <router-link class="mx-3"
             >Noi
             <div class="point d-flex justify-content-center align-items-center">
@@ -32,7 +32,7 @@
               <i class="fa-solid fa-circle"></i>
             </div>
           </router-link>
-        </li>
+        </li> -->
       </ul>
       <ul class="functions d-flex align-items-center">
         <li class="login">

@@ -4,12 +4,22 @@
       <h1>Carrello</h1>
     </div>
     <div class="container-bottom">
-      <h2>I tuoi dettagli</h2>
+
+      <h2>Il tuo ordine è quasi pronto</h2>
+      <p class="mx-1" v-if="store.restaurantcart">
+        Qui i dettagli dei tuoi piatti da "<strong>{{
+          store.restaurantcart.name
+        }}</strong>":
+      </p>
+      <div class="product-container">
+        <ShoppingCart :cart="store.cart" />
+      </div>
+      <h2 class="mt-4">I tuoi dettagli</h2>
       <p class="mx-1">
         I campi marcati con <strong class="text-danger">*</strong> sono
         obbligatori
       </p>
-      <div class="my-3 mb-5 mt-4">
+      <div class="my-3 mb-1 mt-4">
         <div class="container">
           <div class="row">
             <div class="col-6">
@@ -54,17 +64,7 @@
           </div>
         </div>
       </div>
-
-      <h2>Il tuo ordine è quasi pronto</h2>
-      <p class="mx-1" v-if="store.restaurantcart">
-        Qui i dettagli dei tuoi piatti da "<strong>{{
-          store.restaurantcart.name
-        }}</strong>":
-      </p>
-      <div class="product-container">
-        <ShoppingCart :cart="store.cart" />
-      </div>
-      <h2 class="mt-5">Pagamento</h2>
+      <h2 class="mt-1">Pagamento</h2>
       <p class="mx-1">Scegli il tuo metodo di pagamento:</p>
       <PaymentComponent ref="paymentComponent" :name="name" :surname="surname" :email="email" :phone="phone"
         :address="address" @submit-payment="submitPayment" />
@@ -125,7 +125,7 @@
           </div>
 
           <h5 class="my-3 text-end">
-            Totale: {{ store.data.order.total_price }} €
+            Totale: {{ formatCurrency(store.data.order.total_price) }} €
           </h5>
         </div>
       </div>
@@ -184,6 +184,9 @@ export default {
         top: 0,
         behavior: "smooth"
       });
+    },
+    formatCurrency(value) {
+      return parseFloat(value).toFixed(2);
     },
     orderStore() {
       this.store.data.flagOrder = false;
@@ -254,13 +257,11 @@ export default {
     submitPayment() {
       if (this.validateForm()) {
         // Call payment method in PaymentComponent
+        this.scrollToTop();
         this.$refs.paymentComponent.submitPayment();
       } else {
         this.scrollToFirstError();
       }
-    },
-    formatCurrency(value) {
-      return `$${value.toFixed(2)}`;
     },
   },
  

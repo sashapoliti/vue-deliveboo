@@ -82,7 +82,7 @@ export default {
         }
       );
     },
-    async submitPayment() {
+    async submitPayment() {      
       store.flag = true;
       this.disabled = true;
       this.instance.requestPaymentMethod(async (err, payload) => {
@@ -94,6 +94,7 @@ export default {
         }
 
         try {
+          this.store.loader = true;
           const response = await axios.post(
             "http://localhost:8000/api/payment/process",
             {
@@ -128,6 +129,7 @@ export default {
           store.flag = false;
           store.functions.saveCart();
           store.data.flagOrder = true;
+          this.store.loader = false;
         }
       });
     },

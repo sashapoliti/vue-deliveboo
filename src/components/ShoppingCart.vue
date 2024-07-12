@@ -44,7 +44,7 @@
         </div>
       </div>
           
-      <h5 class="my-3 text-end">Totale: {{ totalPrice }} €</h5>
+      <h5 class="my-3 text-end">Totale: {{ formatCurrency(totalPrice) }} €</h5>
     </div>
   </div>
 </template>
@@ -76,6 +76,9 @@ export default {
     setDefaultImage(event) {
       event.target.src = store.api.defaultImg;
     },
+    formatCurrency(value) {
+      return parseFloat(value).toFixed(2);
+    }
   },
 };
 </script>
