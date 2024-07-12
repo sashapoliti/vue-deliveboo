@@ -197,7 +197,7 @@ export default {
         this.errors.name = "Il nome deve avere almeno 3 caratteri.";
       } else if (this.name.length > 50) {
         this.errors.name = "Il nome deve avere al massimo 50 caratteri.";
-      } else if (!/^[a-zA-Z-']+$/.test(this.name)) {
+      } else if (!/^[a-zA-Z\s-']+$/.test(this.name)) {
         this.errors.name = "Il nome deve contenere solo lettere.";
       }
 
@@ -207,7 +207,7 @@ export default {
         this.errors.surname = "Il cognome deve avere almeno 3 caratteri.";
       } else if (this.surname.length > 50) {
         this.errors.surname = "Il cognome deve avere al massimo 50 caratteri.";
-      } else if (!/^[a-zA-Z-']+$/.test(this.surname)) {
+      } else if (!/^[a-zA-Z\s-']+$/.test(this.surname)) {
         this.errors.surname = "Il cognome deve contenere solo lettere.";
       }
 
