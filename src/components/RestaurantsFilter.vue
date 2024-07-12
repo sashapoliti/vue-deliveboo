@@ -611,30 +611,30 @@ export default {
   }
 }
 
-@media screen and (max-width: 991px) {
-  .main-row-2 {
-    max-height: 860px;
-    overflow-y: auto;
-  }
+// @media screen and (max-width: 991px) {
+//   .main-row-2 {
+//     max-height: 860px;
+//     overflow-y: auto;
+//   }
 
-  /* Per Webkit (Chrome, Safari, Edge) */
-  .main-row-2::-webkit-scrollbar {
-    width: 12px;
-  }
+//   /* Per Webkit (Chrome, Safari, Edge) */
+//   .main-row-2::-webkit-scrollbar {
+//     width: 12px;
+//   }
 
-  .main-row-2::-webkit-scrollbar-track {
-    background: transparent;
-  }
+//   .main-row-2::-webkit-scrollbar-track {
+//     background: transparent;
+//   }
 
-  .main-row-2::-webkit-scrollbar-thumb {
-    background-color: #FFE4C4;
-    border-radius: 6px;
-    border: 3px solid transparent;
-    /* Se vuoi spazio attorno alla scrollbar */
-  }
-  .main-row-2::-webkit-scrollbar-thumb:hover {
-    background-color: #ffd7a7; /* Colore del thumb quando si passa sopra con il mouse */
-  }
+//   .main-row-2::-webkit-scrollbar-thumb {
+//     background-color: #FFE4C4;
+//     border-radius: 6px;
+//     border: 3px solid transparent;
+//     /* Se vuoi spazio attorno alla scrollbar */
+//   }
+//   .main-row-2::-webkit-scrollbar-thumb:hover {
+//     background-color: #ffd7a7; /* Colore del thumb quando si passa sopra con il mouse */
+//   }
 
-}
+// }
 </style>
