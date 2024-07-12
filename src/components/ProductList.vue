@@ -33,7 +33,7 @@
   </div>
 
   <div class="d-flex justify-content-between container align-items-center mb-3">
-    <div class="fw-bold ms-1 "> Totale piatti: ({{ this.sortedPlates.length }})</div>
+    <div class="fw-bold ms-1 "> Totale piatti ({{ this.sortedPlates.length }})</div>
     <div class="pagination" v-if="totalPages > 1">
       <button :disabled="currentPage === 1" @click="currentPage--">
         <i class="fa-solid fa-angles-left"></i>
