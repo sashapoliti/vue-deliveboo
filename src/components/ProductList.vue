@@ -91,7 +91,7 @@ export default {
       store,
       showModal: false,
       currentPage: 1,
-      itemsPerPage: 6,
+      itemsPerPage: 12,
     };
   },
   methods: {
